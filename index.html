@@ -714,7 +714,7 @@
       <li>Roteador travado (necessita reinicialização)</li>
       <li>Cabos conectados em porta incorreta</li>
       <li>Roteador resetado — necessita reconfiguração</li>
-      <li>Ficha rompida / problema no conector</li>
+      <li>Fibra rompida / problema no conector</li>
     </ul>
 
     <div class="box box-tip">
@@ -767,7 +767,7 @@
           </tr>
           <tr>
             <td><strong>Flashman</strong></td>
-            <td>Gerenciamento remoto de equipamentos do cliente (CPEs / ONU / Roteadores). Usado para configurar roteador, mudar DNS, ver credenciais</td>
+            <td>Gerenciamento remoto de equipamentos do cliente (CPEs / ONT / Roteadores). Usado para configurar roteador, mudar DNS, ver credenciais</td>
             <td><span class="tag tag-blue">Técnico</span></td>
           </tr>
           <tr>
@@ -776,7 +776,7 @@
             <td><span class="tag tag-orange">Operacional</span></td>
           </tr>
             <td><strong>Matrix</strong></td>
-            <td>Plataforma de comunicação via WhatsApp com clientes</td>
+            <td>Plataforma de comunicação via mensagens com clientes</td>
             <td><span class="tag tag-gray">Comunicação</span></td>
           </tr>
           <tr>
@@ -801,12 +801,12 @@
       <div class="box-icon">⚠️</div>
       <div class="box-content">
         <strong>Atenção — MAC com "CMS"</strong>
-        Se o MAC do equipamento do cliente começar com <strong>CMS</strong>, esse equipamento <strong>não aparece na UNM e nem no Flashman</strong>. Nesse caso, o acesso deve ser feito via <strong>IP</strong> diretamente no Google.
+        Se o MAC do equipamento do cliente começar com <strong>CMS</strong>, esse equipamento aparece na UNM, <strong>mas no Flashman não aparece</strong>. Nesse caso, para acessar as configurações precisa usar o <strong>IP da ONT</strong>  ou do roteador para acessar via web no Google Chrome.
       </div>
     </div>
 
-    <h3>2.1 Quando há dois logins na UNM</h3>
-    <p>Quando o cliente possui dois serviços (Internet + TV), cada serviço terá um login diferente na UNM. Exemplo:</p>
+    <h3>2.1 Quando há dois logins no IXC</h3>
+    <p>Quando o cliente possui dois serviços (Internet + TV), cada serviço terá um login diferente na IXC. Exemplo:</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Login</th><th>Serviço</th></tr></thead>
@@ -859,7 +859,7 @@
           <tr>
             <td><code>*2 3003#</code></td>
             <td><strong>Comercial</strong></td>
-            <td>Mudança de plano (aumentar/diminuir), mudança de cômodo, mudança de endereço</td>
+            <td>Mudança de plano (aumentar/diminuir), mudança de cômodo, mudança de endereço e troca de titularidade</td>
           </tr>
           <tr>
             <td><code>*2 3004#</code></td>
@@ -879,7 +879,7 @@
           <tr>
             <td><code>*2 3008#</code></td>
             <td><strong>NOC 1</strong></td>
-            <td>Liberação de ONU, tirar dúvidas técnicas, unificar falhas</td>
+            <td>Liberação de ONU, tirar dúvidas técnicas, identificar falhas</td>
           </tr>
           <tr>
             <td><code>*2 3009#</code></td>
@@ -976,7 +976,8 @@
         <thead><tr><th>Prefixo do Last IP</th><th>Situação</th><th>Ação</th></tr></thead>
         <tbody>
           <tr><td><code>10.x.x.x</code></td><td>Plano Suspenso / Login Bloqueado</td><td>Verificar fatura em aberto no IXC. Resolver: salvar/trocar senha e reiniciar ONU</td></tr>
-          <tr><td><code>100.x.x.x</code></td><td>Cliente sem acesso à rede</td><td>Verificar configurações, verificar PPPoE</td></tr>
+          <tr><td><code>192-100.x.x.x</code></td><td>IP PRIVADO, cliente sem acesso à rede.</td><td>Verificar configurações, verificar PPPoE</td></tr>
+	  <tr><td><code>Outros.x.x.x</code></td><td>IP PÚBLICO, cliente com acesso à rede.</td><td>Verificar configurações, verificar PPPoE</td></tr>
         </tbody>
       </table>
     </div>
@@ -1082,14 +1083,14 @@
             <td><span class="tag tag-green">Maior</span></td>
             <td><span class="tag tag-orange">Menor</span></td>
             <td>Dispositivos mais recentes</td>
-            <td>Velocidade máxima, dispositivos próximos ao roteador</td>
+            <td>Melhor Velocidade compatível com 500mb, dispositivos próximos ao roteador</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <h3>5.4 IXC/Radius Desconectado — Procedimento</h3>
-    <p>Quando o PPPoE não aparece ou a conexão cai com IXC/Radius desconectado, escreva no protocolo: <strong>"IXC/Radius desconectado"</strong> — isso salva a senha novamente no sistema.</p>
+    <p>Quando o PPPoE não aparece ou a conexão cai com IXC/Radius desconectado, escreva no protocolo: <strong>"IXC/Radius desconectado"</strong>  - e siga esse passo a passo abaixo:</p>
 
     <div class="steps">
       <div class="step"><div class="step-num">1</div><div class="step-body">Verificar se a WAN-LAN está conectada na UNM</div></div>
