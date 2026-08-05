@@ -3,1696 +3,751 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manual Operacional He-net — Suporte & Call Center</title>
+<title>Portal Operacional He-net</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
 <link rel="icon" href="https://i.postimg.cc/jdKbXRsg/manual-henet-icon.png">
 <style>
-  :root {
-    --orange: #FF6600;
-    --orange-light: #FF8533;
-    --orange-pale: #FFF0E6;
-    --blue-dark: #003366;
-    --blue-mid: #0055A4;
-    --blue-light: #E6F0FF;
-    --blue-pale: #F0F6FF;
-    --white: #FFFFFF;
-    --gray-50: #F8F9FA;
-    --gray-100: #F1F3F5;
-    --gray-200: #E9ECEF;
-    --gray-400: #ADB5BD;
-    --gray-600: #6C757D;
-    --gray-800: #343A40;
-    --gray-900: #212529;
-    --green: #1A7F3C;
-    --green-pale: #E8F5EE;
-    --red: #C0392B;
-    --red-pale: #FDECEC;
-    --yellow: #F39C12;
-    --yellow-pale: #FEF9E7;
-    --radius: 8px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Barlow', sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--gray-900);
-    background: var(--gray-50);
-  }
-
-@media print {
-  body { margin: 0; padding: 0; }
-  .box-alerta, .box-dica { break-inside: avoid; }
-  h1, h2, h3 { break-after: avoid; }
-}
-
-  /* ─── CAPA ─────────────────────────────────────── */
-  .cover {
-    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 60%, #006FD6 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    page-break-after: always;
-  }
-
-  .cover::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,102,0,0.04) 40px, rgba(255,102,0,0.04) 80px);
-  }
-
-  .cover::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: -60px;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,102,0,0.25) 0%, transparent 70%);
-  }
-
-  .cover-top-bar {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, var(--orange), var(--orange-light), #FFB347);
-  }
-
-  .cover-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 40px;
-    max-width: 800px;
-  }
-
-  .cover-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255,255,255,0.08);
-    border: 1.5px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    padding: 14px 28px;
-    margin-bottom: 10px;
-    backdrop-filter: blur(4px);
-  }
-
-  .logo-icon {
-    width: 52px; height: 52px;
-    background: linear-gradient(135deg, var(--orange), #FF8C00);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    color: white;
-    letter-spacing: -1px;
-    box-shadow: 0 4px 12px rgba(255,102,0,0.4);
-  }
-
-  .logo-text {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 28px;
-    letter-spacing: 2px;
-    color: white;
-  }
-
-  .logo-text span { color: var(--orange-light); }
-
-  .cover-badge {
-    background: rgba(255,102,0,0.2);
-    border: 1px solid rgba(255,102,0,0.5);
-    color: #FFB347;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 5px 16px;
-    border-radius: 20px;
-    margin: 20px 100px;
-  }
-
-  .cover h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(38px, 6vw, 64px);
-    font-weight: 800;
-    color: white;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .cover h1 span { color: var(--orange-light); }
-
-  .cover-subtitle {
-    font-size: 18px;
-    color: rgba(255,255,255,0.75);
-    font-weight: 400;
-    margin-bottom: 48px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cover-divider {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--orange), transparent);
-    margin: 32px auto;
-    border-radius: 2px;
-  }
-
-  .cover-pills {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
-  }
-
-  .cover-pill {
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.85);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 8px 20px;
-    border-radius: 20px;
-  }
-
-  .cover-footer {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(0,0,0,0.2);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 16px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 2;
-  }
-
-  .cover-footer span {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 1px;
-  }
-
-  .cover-footer strong { color: var(--orange-light); }
-
-  /* ─── LAYOUT WRAPPER ────────────────────────────── */
-  .page-wrapper {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
-  /* ─── SUMÁRIO ────────────────────────────────────── */
-  .toc {
-    background: white;
-    border-radius: 16px;
-    padding: 40px 48px;
-    margin: 40px 0;
-    box-shadow: var(--shadow-md);
-    border-top: 5px solid var(--orange);
-  }
-
-  .toc-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--blue-dark);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 28px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--gray-100);
-  }
-
-  .toc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  @media(max-width: 600px) { .toc-grid { grid-template-columns: 1fr; } }
-
-  .toc a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    color: var(--gray-800);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    transition: all 0.15s;
-    border: 1px solid transparent;
-  }
-
-  .toc a:hover {
-    background: var(--blue-pale);
-    border-color: var(--blue-light);
-    color: var(--blue-mid);
-  }
-
-  .toc-num {
-    min-width: 28px; height: 28px;
-    background: linear-gradient(135deg, var(--orange), var(--orange-light));
-    color: white;
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-  }
-
-  /* ─── SECTION HEADING ──────────────────────────── */
-  .section {
-    background: white;
-    border-radius: 16px;
-    padding: 40px 48px;
-    margin: 32px 0;
-    box-shadow: var(--shadow-md);
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 32px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--gray-100);
-  }
-
-  .section-num {
-    min-width: 52px; height: 52px;
-    background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
-    color: white;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-  }
-
-  .section-header h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--blue-dark);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    line-height: 1.2;
-  }
-
-  .section-header .section-desc {
-    font-size: 13px;
-    color: var(--gray-600);
-    font-weight: 400;
-    margin-top: 3px;
-    text-transform: none;
-    letter-spacing: 0;
-  }
-
-  h3 {
-    font-family: 'Barlow', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--blue-dark);
-    margin: 28px 0 12px;
-    padding-left: 12px;
-    border-left: 3px solid var(--orange);
-  }
-
-  h4 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--gray-800);
-    margin: 20px 0 8px;
-  }
-
-  p { margin-bottom: 12px; }
-
-  /* ─── BOXES ─────────────────────────────────────── */
-  .box {
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin: 16px 0;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .box-icon {
-    font-size: 20px;
-    min-width: 26px;
-    text-align: center;
-    padding-top: 1px;
-  }
-
-  .box-content strong { font-size: 13px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-  .box-alert {
-    background: #FFF3E0;
-    border: 1.5px solid #FFB74D;
-    color: #7B4000;
-  }
-  .box-alert strong { color: #E65100; }
-
-  .box-danger {
-    background: var(--red-pale);
-    border: 1.5px solid #F1948A;
-    color: #7B241C;
-  }
-  .box-danger strong { color: var(--red); }
-
-  .box-tip {
-    background: var(--blue-pale);
-    border: 1.5px solid #90CAF9;
-    color: var(--blue-dark);
-  }
-  .box-tip strong { color: var(--blue-mid); }
-
-  .box-success {
-    background: var(--green-pale);
-    border: 1.5px solid #81C784;
-    color: #145A32;
-  }
-  .box-success strong { color: var(--green); }
-
-  .box-info {
-    background: var(--orange-pale);
-    border: 1.5px solid #FFCC99;
-    color: #7A3500;
-  }
-  .box-info strong { color: var(--orange); }
-
-  /* ─── TABELAS ──────────────────────────────────── */
-  .table-wrap {
-    overflow-x: auto;
-    margin: 16px 0;
-    border-radius: 10px;
-    border: 1px solid var(--gray-200);
-    box-shadow: var(--shadow-sm);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13.5px;
-  }
-
-  thead tr {
-    background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
-  }
-
-  thead th {
-    color: white;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    padding: 12px 16px;
-    text-align: left;
-    white-space: nowrap;
-  }
-
-  tbody tr:nth-child(even) { background: var(--gray-50); }
-  tbody tr:hover { background: var(--blue-pale); }
-
-  tbody td {
-    padding: 11px 16px;
-    border-bottom: 1px solid var(--gray-100);
-    vertical-align: top;
-    line-height: 1.5;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  .tag-orange { background: #FFE0CC; color: #CC4400; }
-  .tag-blue { background: var(--blue-light); color: var(--blue-dark); }
-  .tag-red { background: var(--red-pale); color: var(--red); }
-  .tag-green { background: var(--green-pale); color: var(--green); }
-  .tag-gray { background: var(--gray-100); color: var(--gray-600); }
-
-  /* ─── STEPS ─────────────────────────────────────── */
-  .steps { margin: 16px 0; }
-
-  .step {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 12px;
-    align-items: flex-start;
-  }
-
-  .step-num {
-    min-width: 28px; height: 28px;
-    background: linear-gradient(135deg, var(--orange), var(--orange-light));
-    color: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700;
-    font-size: 13px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .step-body { font-size: 14px; padding-top: 4px; }
-  .step-body strong { color: var(--blue-dark); }
-
-  /* ─── CODE ──────────────────────────────────────── */
-  code {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 13px;
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: 4px;
-    padding: 1px 7px;
-    color: var(--blue-dark);
-  }
-
-  pre {
-    background: var(--gray-900);
-    color: #A8FF78;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 13px;
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin: 16px 0;
-    overflow-x: auto;
-    line-height: 1.8;
-  }
-
-  pre .comment { color: var(--gray-400); }
-  pre .key { color: #FFB347; }
-
-  /* ─── IMAGE PLACEHOLDER ─────────────────────────── */
-  .img-placeholder {
-    background: linear-gradient(135deg, var(--gray-100), var(--blue-pale));
-    border: 2px dashed var(--blue-mid);
-    border-radius: 10px;
-    padding: 28px 20px;
-    text-align: center;
-    margin: 16px 0;
-    color: var(--blue-mid);
-    font-size: 13px;
-    font-style: italic;
-  }
-
-  /* ─── GLOSSARY ──────────────────────────────────── */
-  .glossary-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 8px;
-  }
-
-  @media(max-width: 600px) { .glossary-grid { grid-template-columns: 1fr; } }
-
-  .glossary-item {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-left: 3px solid var(--orange);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 13.5px;
-  }
-
-  .glossary-term {
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 700;
-    color: var(--blue-dark);
-    font-size: 13px;
-    margin-bottom: 3px;
-  }
-
-  .glossary-def { color: var(--gray-800); line-height: 1.5; }
-
-  /* ─── FOOTER ─────────────────────────────────────── */
-  .doc-footer {
-    margin-top: 60px;
-    padding: 24px 40px;
-    background: var(--blue-dark);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .doc-footer span { font-size: 12px; color: rgba(255,255,255,0.5); }
-  .doc-footer strong { color: var(--orange-light); }
-
-  /* ─── MISC ──────────────────────────────────────── */
-  ul.list, ol.list {
-    margin: 10px 0 10px 20px;
-  }
-
-  ul.list li, ol.list li {
-    margin-bottom: 6px;
-    font-size: 14px;
-  }
-
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 12px 0;
-  }
-
-  @media(max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
-
-  .card {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-radius: 10px;
-    padding: 16px 20px;
-  }
-
-  .card-title {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--blue-dark);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--gray-200);
-    margin: 24px 0;
-  }
-
-  .highlight { background: #FFFDE7; padding: 0 4px; border-radius: 3px; }
+:root{--or:#FF6600;--orl:#FF8533;--orp:#FFF0E6;--bd:#003366;--bm:#0055A4;--bl:#E6F0FF;--bp:#F0F6FF;--w:#FFF;--g50:#F8F9FA;--g100:#F1F3F5;--g200:#E9ECEF;--g400:#ADB5BD;--g600:#6C757D;--g800:#343A40;--g900:#212529;--gn:#1A7F3C;--gnp:#E8F5EE;--rd:#C0392B;--rdp:#FDECEC;--yw:#F39C12;--ywp:#FEF9E7;--r:8px;--s1:0 1px 3px rgba(0,0,0,.08);--s2:0 4px 12px rgba(0,0,0,.10);--s3:0 8px 24px rgba(0,0,0,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Barlow',sans-serif;font-size:15px;line-height:1.7;color:var(--g900);background:var(--g50)}
+.top-bar{height:4px;background:linear-gradient(90deg,var(--or),var(--orl),#FFB347)}
+.site-header{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,var(--bd) 0%,var(--bm) 100%);box-shadow:0 2px 16px rgba(0,0,0,.18)}
+.header-top{display:flex;align-items:center;gap:16px;padding:10px 28px;border-bottom:1px solid rgba(255,255,255,.08)}
+.header-logo img{height:36px;width:auto}
+.header-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:19px;color:#fff;letter-spacing:1px;text-transform:uppercase}
+.header-title span{color:var(--orl)}
+.header-badge{margin-left:auto;background:rgba(255,102,0,.2);border:1px solid rgba(255,102,0,.4);color:#FFB347;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px}
+.tab-nav{display:flex;padding:0 20px;overflow-x:auto;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;color:rgba(255,255,255,.6);font-family:'Barlow',sans-serif;font-size:13px;font-weight:600;padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .18s;display:flex;align-items:center;gap:6px}
+.tab-btn:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.06)}
+.tab-btn.active{color:#fff;border-bottom-color:var(--or);background:rgba(255,102,0,.08)}
+.tab-content{display:none}.tab-content.active{display:block}
+.pw{max-width:1000px;margin:0 auto;padding:30px 20px 70px}
+.section{background:#fff;border-radius:14px;padding:32px 40px;margin:24px 0;box-shadow:var(--s2)}
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--g100)}
+.sn{min-width:44px;height:44px;background:linear-gradient(135deg,var(--bd),var(--bm));color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:19px;flex-shrink:0}
+.sh h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--bd);text-transform:uppercase;letter-spacing:1.5px;line-height:1.2}
+.sd{font-size:12px;color:var(--g600);margin-top:2px}
+h3{font-family:'Barlow',sans-serif;font-size:15px;font-weight:700;color:var(--bd);margin:22px 0 10px;padding-left:10px;border-left:3px solid var(--or)}
+p{margin-bottom:10px}
+.box{border-radius:9px;padding:13px 16px;margin:12px 0;display:flex;gap:11px;align-items:flex-start;font-size:13.5px;line-height:1.6}
+.bi{font-size:17px;min-width:22px;text-align:center;padding-top:1px}
+.bc strong{font-size:13.5px;font-weight:700;display:inline}.bc>strong:first-child{font-size:11px;font-weight:700;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;display:block}
+.ba{background:#FFF3E0;border:1.5px solid #FFB74D;color:#7B4000}.ba strong{color:#E65100}
+.bd2{background:var(--rdp);border:1.5px solid #F1948A;color:#7B241C}.bd2 strong{color:var(--rd)}
+.bt{background:var(--bp);border:1.5px solid #90CAF9;color:var(--bd)}.bt strong{color:var(--bm)}
+.bs{background:var(--gnp);border:1.5px solid #81C784;color:#145A32}.bs strong{color:var(--gn)}
+.bi2{background:var(--orp);border:1.5px solid #FFCC99;color:#7A3500}.bi2 strong{color:var(--or)}
+.tw{overflow-x:auto;margin:12px 0;border-radius:9px;border:1px solid var(--g200);box-shadow:var(--s1)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead tr{background:linear-gradient(135deg,var(--bd),var(--bm))}
+thead th{color:#fff;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:10px 13px;text-align:left;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--g50)}
+tbody tr:hover{background:var(--bp)}
+tbody td{padding:9px 13px;border-bottom:1px solid var(--g100);vertical-align:top;line-height:1.5}
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.to{background:#FFE0CC;color:#CC4400}.tb{background:var(--bl);color:var(--bd)}.tr{background:var(--rdp);color:var(--rd)}.tg{background:var(--gnp);color:var(--gn)}.tgy{background:var(--g100);color:var(--g600)}.ty{background:var(--ywp);color:#7B4000}
+.steps{margin:12px 0}
+.step{display:flex;gap:11px;margin-bottom:9px;align-items:flex-start}
+.step-n{min-width:24px;height:24px;background:linear-gradient(135deg,var(--or),var(--orl));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;margin-top:2px}
+.step-b{font-size:13.5px;padding-top:2px}
+.step-b strong{color:var(--bd)}
+code{font-family:'Source Code Pro',monospace;font-size:12px;background:var(--g100);border:1px solid var(--g200);border-radius:4px;padding:1px 5px;color:var(--bd)}
+.tc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+@media(max-width:600px){.tc{grid-template-columns:1fr}}
+.card{background:var(--g50);border:1px solid var(--g200);border-radius:9px;padding:13px 16px}
+.ct{font-weight:700;font-size:13.5px;color:var(--bd);margin-bottom:7px;display:flex;align-items:center;gap:7px}
+ul.li,ol.li{margin:8px 0 8px 18px}
+ul.li li,ol.li li{margin-bottom:5px;font-size:13.5px}
+.ggl{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:7px}
+@media(max-width:600px){.ggl{grid-template-columns:1fr}}
+.gi{background:var(--g50);border:1px solid var(--g200);border-left:3px solid var(--or);border-radius:7px;padding:10px 14px}
+.gt{font-family:'Source Code Pro',monospace;font-weight:700;color:var(--bd);font-size:12px;margin-bottom:2px}
+.gd{color:var(--g800);line-height:1.5;font-size:13px}
+.df{margin-top:50px;padding:18px 32px;background:var(--bd);border-radius:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.df span{font-size:11px;color:rgba(255,255,255,.5)}.df strong{color:var(--orl)}
+.toc{background:#fff;border-radius:14px;padding:26px 34px;margin:0 0 22px;box-shadow:var(--s2);border-top:4px solid var(--or)}
+.toc-t{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--bd);text-transform:uppercase;letter-spacing:2px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--g100)}
+.toc-g{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+@media(max-width:600px){.toc-g{grid-template-columns:1fr}}
+.toc a{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;color:var(--g800);text-decoration:none;font-weight:500;font-size:13px;transition:all .15s;border:1px solid transparent}
+.toc a:hover{background:var(--bp);border-color:var(--bl);color:var(--bm)}
+.tn{min-width:24px;height:24px;background:linear-gradient(135deg,var(--or),var(--orl));color:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;flex-shrink:0}
+.tab-intro{background:linear-gradient(135deg,var(--bd) 0%,var(--bm) 70%,#0070D6 100%);border-radius:14px;padding:22px 28px;margin-bottom:24px;color:#fff;position:relative;overflow:hidden}
+.tab-intro::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,102,0,.04) 40px,rgba(255,102,0,.04) 80px)}
+.tic{position:relative;z-index:1}
+.tab-intro h2{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.tab-intro h2 span{color:var(--orl)}
+.tab-intro p{color:rgba(255,255,255,.75);font-size:13.5px;margin:0}
+/* NEWS */
+.nc{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.ncard{background:#fff;border-radius:13px;box-shadow:var(--s2);overflow:hidden;border-top:4px solid var(--bm);transition:transform .15s,box-shadow .15s}
+.ncard:hover{transform:translateY(-2px);box-shadow:var(--s3)}
+.ncard.novo{border-top-color:var(--gn)}.ncard.urgente{border-top-color:var(--rd)}.ncard.alter{border-top-color:var(--or)}.ncard.vigor{border-top-color:var(--bm)}
+.nb{padding:16px 18px}
+.nm{display:flex;align-items:center;gap:7px;margin-bottom:9px;flex-wrap:wrap}
+.badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.b-novo{background:var(--gnp);color:var(--gn)}.b-vigor{background:var(--bl);color:var(--bd)}.b-imp{background:var(--rdp);color:var(--rd)}.b-alt{background:var(--orp);color:#CC4400}
+.nd{font-size:11px;color:var(--g400);font-weight:500;margin-left:auto}
+.nt{font-weight:700;font-size:14px;color:var(--bd);margin-bottom:7px;line-height:1.3}
+.nb p{font-size:13px;color:var(--g800);margin:0;line-height:1.6}
+.nf{padding:9px 18px 13px;border-top:1px solid var(--g100);font-size:11.5px;color:var(--g600)}
+.sc{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.sb{flex:1;min-width:200px;display:flex;align-items:center;background:#fff;border:1.5px solid var(--g200);border-radius:9px;padding:0 12px;gap:9px;box-shadow:var(--s1);transition:border-color .15s}
+.sb:focus-within{border-color:var(--bm)}
+.sb input{flex:1;border:none;outline:none;font-family:'Barlow',sans-serif;font-size:13.5px;padding:10px 0;background:transparent}
+.fbs{display:flex;gap:5px;flex-wrap:wrap}
+.fb{background:#fff;border:1.5px solid var(--g200);color:var(--g600);font-family:'Barlow',sans-serif;font-size:11.5px;font-weight:600;padding:6px 12px;border-radius:20px;cursor:pointer;transition:all .15s}
+.fb:hover,.fb.active{background:var(--bm);border-color:var(--bm);color:#fff}
+/* FAQ */
+.ai{background:#fff;border-radius:11px;margin-bottom:9px;box-shadow:var(--s1);border:1px solid var(--g200);overflow:hidden}
+.at{width:100%;background:none;border:none;padding:14px 20px;text-align:left;font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;color:var(--g900);cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .15s}
+.at:hover{background:var(--bp)}.at.open{background:var(--bp);color:var(--bd)}
+.aa{margin-left:auto;font-size:11px;color:var(--g400);transition:transform .2s}.at.open .aa{transform:rotate(180deg);color:var(--bm)}
+.ab{display:none;padding:0 20px 16px;font-size:13.5px;line-height:1.7;color:var(--g800)}.ab.open{display:block}
+.ip{background:linear-gradient(135deg,var(--g100),var(--bp));border:2px dashed var(--bm);border-radius:9px;padding:20px;text-align:center;margin:12px 0}
+.ip img{max-width:100%;height:auto;border-radius:5px}
+@media(max-width:640px){.section{padding:20px 16px}.tab-intro{padding:16px 18px}.pw{padding:18px 12px 60px}}
 </style>
 </head>
 <body>
+<div class="top-bar"></div>
+<header class="site-header">
+  <div class="header-top">
+    <img src="https://i.postimg.cc/nLQDDB74/henet-logo-Photoroom.png" alt="He-net" style="height:36px">
+    <div class="header-title">Portal <span>Operacional</span></div>
+    <div class="header-badge">🔒 Uso Interno</div>
+  </div>
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="sw('news',this)"><span>📰</span> Central de Comunicados</button>
+    <button class="tab-btn" onclick="sw('manual',this)"><span>📋</span> Manual Operacional</button>
+    <button class="tab-btn" onclick="sw('tecnico',this)"><span>📡</span> Base Técnica - Redes</button>
+    <button class="tab-btn" onclick="sw('faq',this)"><span>❓</span> FAQ & Busca Rápida</button>
+  </nav>
+</header>
 
-<!-- ══════════════════════════════════════════════ CAPA ══ -->
-<div class="cover">
-  <div class="cover-top-bar"></div>
-
-  <div class="cover-content">
-    <div class="cover-logo">
-    	<img src="https://i.postimg.cc/nLQDDB74/henet-logo-Photoroom.png" alt="Logo Henet" style="max-width: 100%; height: auto;">
-    </div>
-
-    <div class="cover-badge">Documento Interno Operacional</div>
-
-    <h1>Manual de <span>Suporte</span><br>& Call Center</h1>
-
-    <p class="cover-subtitle">Guia completo para atendentes, técnicos e novos colaboradores do suporte e call center He-net.</p>
-
-    <div class="cover-divider"></div>
-
-    <div class="cover-pills">
-      <span class="cover-pill">📞 Atendimento ao Cliente</span>
-      <span class="cover-pill">🔧 Suporte Técnico</span>
-      <span class="cover-pill">📡 Redes & Equipamentos</span>
-      <span class="cover-pill">💡 Procedimentos Operacionais</span>
+<!-- ══ TAB 1: COMUNICADOS ══ -->
+<div id="tab-news" class="tab-content active"><div class="pw">
+  <div class="tab-intro"><div class="tic">
+    <h2>Central de <span>Comunicados</span></h2>
+    <p>Avisos, alterações de processo e informações operacionais publicadas pelos monitores e supervisores. Válidos para uso imediato no atendimento.</p>
+  </div></div>
+  <div class="sc">
+    <div class="sb"><span>🔍</span><input id="ns" placeholder="Buscar comunicado (ex: DNS, VLAN, IP Público...)" oninput="fn()"></div>
+    <div class="fbs">
+      <button class="fb active" onclick="fc('todos',this)">Todos</button>
+      <button class="fb" onclick="fc('novo',this)">Novos</button>
+      <button class="fb" onclick="fc('vigor',this)">Em Vigor</button>
+      <button class="fb" onclick="fc('alter',this)">Alterações</button>
+      <button class="fb" onclick="fc('urgente',this)">Importantes</button>
     </div>
   </div>
+  <div class="nc" id="ng">
 
-  <div class="cover-footer">
-    <span>He-net Telecomunicações — <strong>Manual Interno</strong></span>
-    <span>Versão <strong>1.0</strong> · Abril de 2026</span>
-    <span>🔒 Uso Restrito — Não Divulgar</span>
+    <div class="ncard novo" data-c="novo" data-t="backoffice grupo agendar hedata sem conexao prioridades contato cliente noturno feriado">
+      <div class="nb"><div class="nm"><span class="badge b-novo">🟢 Novo</span><span class="nd">25/07/2026</span></div>
+      <div class="nt">Grupo "Agendar Clientes" Descontinuado - Usar HeData</div>
+      <p>O grupo "agendar clientes" não existe mais. Use o <strong>HeData</strong> para agendamentos. Sem vaga nas próximas 24h (sem conexão) ou 48h (outros), ligue para o BackOffice. Fora do expediente do BKO: reserve a data mais próxima, coloque no grupo de prioridades e informe claramente o que foi ou não confirmado ao cliente. Confirme número de contato e disponibilidade.</p></div>
+      <div class="nf">👤 Matheus Marques</div>
+    </div>
+
+    <div class="ncard alter" data-c="alter" data-t="ordem de servico os mensagem informacao extra agendada bko backoffice tecnico nao ve">
+      <div class="nb"><div class="nm"><span class="badge b-alt">🔄 Alteração de Processo</span><span class="nd">15/07/2026</span></div>
+      <div class="nt">OS Agendada: Informações Extras - Contato com BackOffice Obrigatório</div>
+      <p>Se o cliente passar informação extra (número de contato, referência) após a O.S. já estar <strong>agendada</strong>, entre em contato com o BKO para que eles adicionem na visita. <strong>Não adicione apenas mensagem</strong> - o técnico não verá. Atenção: editar a O.S. após agendada pode remover o agendamento e tirar da agenda do técnico.</p></div>
+      <div class="nf">👤 Matheus Marques</div>
+    </div>
+
+    <div class="ncard alter" data-c="alter" data-t="endereco completo cadastro comercial os ordem servico telefone referencia cor residencia localizacao matrix">
+      <div class="nb"><div class="nm"><span class="badge b-alt">🔄 Alteração de Processo</span><span class="nd">07/07/2026</span></div>
+      <div class="nt">Confirmar Endereço Completo e Atualizar Cadastro via Comercial</div>
+      <p>Se o endereço do cliente estiver desatualizado no cadastro, além de registrar na O.S., <strong>transferir para o Comercial</strong> para atualização cadastral. Na abertura da O.S. sempre confirmar: telefone de contato, pontos de referência, cor da residência e local próximo. <strong>Atendimentos via Matrix que resultarem em O.S. exigem localização fixa do cliente.</strong></p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard alter" data-c="alter" data-t="agendamento noturno hedata backoffice turno periodo confirmar cliente dia horario reservar">
+      <div class="nb"><div class="nm"><span class="badge b-alt">🔄 Alteração de Processo</span><span class="nd">07/07/2026</span></div>
+      <div class="nt">Noturno/Madrugada: Informar Dia e Turno ao Cliente Diretamente</div>
+      <p>Quando estiver reservando atendimento fora do expediente do BKO (noturno ou madrugada), <strong>informe ao cliente o dia e o turno</strong> - não diga mais que o BKO vai retornar o contato para agendar. Sem vagas próximas por domingo ou feriado: ligar para o BKO, pois às vezes não aparecem vagas nesses dias.</p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard urgente" data-c="urgente" data-t="protocolo cancelamento retencao motivo informacoes superficiais mudanca endereco insatisfacao visita tecnica titularidade">
+      <div class="nb"><div class="nm"><span class="badge b-imp">⚡ Importante</span><span class="nd">03/07/2026</span></div>
+      <div class="nt">Protocolo de Cancelamento - Informações Completas Obrigatórias</div>
+      <p>Protocolos de retenção/cancelamento estão chegando com informações superficiais. Ao receber solicitação de cancelamento, explore o <strong>motivo real</strong>. Mudança de endereço: registrar cidade/região de destino. Insatisfação: oferecer visita técnica antes de propor troca de titularidade. Registrar: proposta ofertada, tipo de negociação e detalhes do atendimento.</p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard urgente" data-c="urgente" data-t="financeiro horario transferencia tme expediente segunda sexta sabado domingo feriado">
+      <div class="nb"><div class="nm"><span class="badge b-imp">⚡ Importante</span><span class="nd">29/06/2026</span></div>
+      <div class="nt">Horário do Setor Financeiro - Não Transferir Fora do Expediente</div>
+      <p>Transferências para o Financeiro fora do horário impactam o TME. <strong>Horários permitidos:</strong> Seg–Sex: 07h às 20h30 · Sábados: 07h às 17h30 · Domingos e feriados: 08h às 17h30. <strong>Não realizar transferências fora desses horários.</strong></p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard alter" data-c="alter" data-t="agendamento hedata backoffice reservar periodo ordem servico abertura confirmacao cliente sem conexao">
+      <div class="nb"><div class="nm"><span class="badge b-alt">🔄 Alteração de Processo</span><span class="nd">Jun/2026</span></div>
+      <div class="nt">Agendamento via HeData - Nova Plataforma de Agenda Técnica</div>
+      <p>Não é mais necessário contatar o BKO para confirmar atendimento. <strong>Atenção:</strong> reservar data/período na <strong>O.S. de visita</strong> - não na análise ou configuração inicial. Sem conexão com mais de 24h: ligar para o BKO se não achar vaga. Cliente insatisfeito com horário ou com observações especiais: também ligar para o BKO.</p></div>
+      <div class="nf">👤 Matheus Marques / BackOffice</div>
+    </div>
+
+    <div class="ncard alter" data-c="alter" data-t="fiscalizacao sem acesso recem instalado retorno terceirizado fernanda brandao juliana vitoria bko">
+      <div class="nb"><div class="nm"><span class="badge b-alt">🔄 Alteração de Processo</span><span class="nd">05/05/2026</span></div>
+      <div class="nt">Cliente Recém-Instalado com Sinal Alto ou Sem Conexão</div>
+      <p>Verificar com o cliente se houve rompimento de fibra externo. Se não: acionar <strong>Fernanda Brandão</strong> (Fiscalização) para decidir entre O.S. de sem conexão ou retorno de terceirizado. Caso Fernanda não esteja disponível: Juliana ou Vitória (Fiscalização) ou BKO. Se nenhum disponível: abrir O.S. de sem conexão e deixar mensagem no Slack para Fernanda acompanhar.</p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard vigor" data-c="vigor" data-t="fiscalizacao status os sem acesso cadastro nova ordem servico retorno">
+      <div class="nb"><div class="nm"><span class="badge b-vigor">🔵 Em Vigor</span><span class="nd">01/04/2026</span></div>
+      <div class="nt">Status "Fiscalização" na O.S. - Não Abrir Nova Ordem</div>
+      <p>Se o cliente relatar sem acesso e a O.S. no cadastro constar status <strong>"Fiscalização"</strong>: o cliente é recém-instalado aguardando aprovação da equipe de fiscalização. Informar as meninas do setor. <strong>Não abrir nova O.S.</strong> - será verificado se deve ser tratado como retorno ou não.</p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard alter" data-c="alter" data-t="reincidencia protocolo 73 analise inicial 147 avulsa assumir finalizar relato cliente endereco telefone">
+      <div class="nb"><div class="nm"><span class="badge b-alt">🔄 Alteração de Processo</span><span class="nd">10/03/2026</span></div>
+      <div class="nt">Processo de Reincidência - Passo a Passo Atualizado</div>
+      <p>1) Protocolo <strong>73 - Análise Inicial do Problema</strong> · 2) Assumir e finalizar · 3) Registrar relato do cliente, endereço, telefone e informações adicionais · 4) Próxima tarefa: <strong>147 - Reincidência Avulsa</strong> · 5) Ao salvar, o protocolo já chega para a equipe de reincidência automaticamente.</p></div>
+      <div class="nf">👤 Supervisão Operacional / Roni</div>
+    </div>
+
+    <div class="ncard urgente" data-c="urgente" data-t="falha massiva registro ramal caixa os analise inicial 73 descricao ordem servico">
+      <div class="nb"><div class="nm"><span class="badge b-imp">⚡ Importante</span><span class="nd">05/03/2026</span></div>
+      <div class="nt">Registro de Falha Massiva - Passo a Passo</div>
+      <p>Pesquisar cliente → Selecionar contrato → Ir em Atendimento → Novo → Assunto: <strong>Análise Inicial - ID 73</strong> → Finalizar a O.S. → Próxima Tarefa: <strong>Registro de Falha Massiva</strong> → Finalizar o atendimento. <strong>Incluir obrigatoriamente o RAMAL e CAIXA na descrição da ordem de serviço.</strong></p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard urgente" data-c="urgente" data-t="os ordem servico dois atendimentos agendados cliente retrabalho backoffice organização agenda">
+      <div class="nb"><div class="nm"><span class="badge b-imp">⚡ Importante</span><span class="nd">09/02/2026</span></div>
+      <div class="nt">Não Gerar Duas O.S. para o Mesmo Cliente</div>
+      <p>Antes de gerar uma O.S., verificar se já existe atendimento agendado para o cliente - mesmo que sejam solicitações diferentes. Dois atendimentos geram retrabalho para a equipe técnica e dificulta a organização das agendas. Caso já exista O.S. agendada, passar a informação para o <strong>BackOffice</strong> para decidirem qual manter em aberto.</p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
+    <div class="ncard vigor" data-c="vigor" data-t="login ixc nao criado noc monitor suporte sem login ativo">
+      <div class="nb"><div class="nm"><span class="badge b-vigor">🔵 Em Vigor</span><span class="nd">01/04/2026</span></div>
+      <div class="nt">Cliente sem Login Criado no IXC</div>
+      <p>Ao atender clientes que não possuem login criado no IXC: se os monitores estiverem disponíveis, repassar para eles. Se não estiverem, solicitar ajuda ao <strong>NOC</strong>, pois já estão cientes de como resolver.</p></div>
+      <div class="nf">👤 Supervisão Operacional</div>
+    </div>
+
   </div>
-</div>
+  <div id="nr" style="display:none;text-align:center;padding:50px 20px;color:var(--g600)"><div style="font-size:36px;margin-bottom:10px">🔍</div><p>Nenhum comunicado encontrado.</p></div>
+  <div class="df"><span>© He-net Telecomunicações · <strong>Portal Operacional Interno</strong></span><span>Versão <strong>2.0</strong> · Julho de 2026</span><span>🔒 Uso Restrito</span></div>
+</div></div>
 
-<!-- ════════════════════════════════════ CONTEÚDO PRINCIPAL ══ -->
-<div class="page-wrapper">
+<!-- ══ TAB 2: MANUAL ══ -->
+<div id="tab-manual" class="tab-content"><div class="pw">
+  <div class="tab-intro"><div class="tic"><h2>Manual <span>Operacional</span></h2><p>Guia completo para atendentes, técnicos e novos colaboradores do suporte He-net.</p></div></div>
+  <div class="toc"><div class="toc-t">📋 Índice</div><div class="toc-g">
+    <a href="#c1"><div class="tn">1</div>Visão Geral & Viabilidade</a>
+    <a href="#c2"><div class="tn">2</div>Sistemas e Ferramentas</a>
+    <a href="#c3"><div class="tn">3</div>Ramais e Setores</a>
+    <a href="#c4"><div class="tn">4</div>Procedimentos na UNM</a>
+    <a href="#c5"><div class="tn">5</div>Diagnóstico de Problemas</a>
+    <a href="#c6"><div class="tn">6</div>Ordens de Serviço (OS)</a>
+    <a href="#c7"><div class="tn">7</div>Conhecendo o Roteador</a>
+    <a href="#c8"><div class="tn">8</div>ONU vs ONT & Fabricantes</a>
+    <a href="#c9"><div class="tn">9</div>PPPoE e Configurações</a>
+    <a href="#c10"><div class="tn">10</div>Casos Práticos</a>
+    <a href="#c11"><div class="tn">11</div>Financeiro & Cancelamento</a>
+    <a href="#c12"><div class="tn">12</div>Glossário</a>
+  </div></div>
 
-  <!-- ── SUMÁRIO ── -->
-  <div class="toc" id="topo">
-    <div class="toc-title">📋 Sumário</div>
-    <div class="toc-grid">
-      <a href="#cap1"><div class="toc-num">1</div>Visão Geral do Suporte He-net</a>
-      <a href="#cap2"><div class="toc-num">2</div>Sistemas e Ferramentas</a>
-      <a href="#cap3"><div class="toc-num">3</div>Ramais e Setores</a>
-      <a href="#cap4"><div class="toc-num">4</div>Procedimentos na UNM</a>
-      <a href="#cap5"><div class="toc-num">5</div>Diagnóstico de Problemas</a>
-      <a href="#cap6"><div class="toc-num">6</div>Ordens de Serviço (OS)</a>
-      <a href="#cap7"><div class="toc-num">7</div>Conhecendo o Roteador</a>
-      <a href="#cap8"><div class="toc-num">8</div>ONU vs ONT</a>
-      <a href="#cap9"><div class="toc-num">9</div>PPPoE e Configurações</a>
-      <a href="#cap10"><div class="toc-num">10</div>Casos Práticos de Atendimento</a>
-      <a href="#cap11"><div class="toc-num">11</div>Financeiro e Cancelamento</a>
-      <a href="#cap12"><div class="toc-num">12</div>Glossário</a>
+  <div class="section" id="c1"><div class="sh"><div class="sn">1</div><div><h2>Visão Geral do Suporte He-net</h2><div class="sd">Conceitos fundamentais para o atendimento</div></div></div>
+    <p>A He-net é uma provedora de internet por fibra óptica. O suporte é responsável por atender clientes com problemas de conectividade, lentidão, configurações ou questões financeiras.</p>
+    <h3>1.1 Viabilidade</h3><p><strong>Viabilidade</strong> é a verificação de que a He-net possui cobertura no endereço do cliente. Só é possível instalar onde há infraestrutura disponível.</p>
+    <h3>1.2 Principais Solicitações</h3>
+    <div class="tc">
+      <div class="card"><div class="ct">🔴 Problemas Técnicos</div><ul class="li"><li>Sem conexão / Fibra rompida</li><li>Lentidão</li><li>Intermitência (quedas)</li></ul></div>
+      <div class="card"><div class="ct">🔵 Questões Administrativas</div><ul class="li"><li>Financeiro (boleto, plano)</li><li>Mudança de titularidade</li><li>Cancelamento de serviço</li></ul></div>
     </div>
-  </div>
-
-
-  <!-- ══════════════════════════════ CAPÍTULO 1 ══ -->
-  <div class="section" id="cap1">
-    <div class="section-header">
-      <div class="section-num">1</div>
-      <div>
-        <h2>Visão Geral do Suporte He-net</h2>
-        <div class="section-desc">Conceitos fundamentais para o atendimento</div>
-      </div>
-    </div>
-
-    <p>A He-net é uma provedora de internet por fibra óptica. O suporte técnico e o call center são responsáveis por atender clientes que enfrentam problemas de conectividade, lentidão, configurações ou questões financeiras.</p>
-
-    <h3>1.1 Conceito de Viabilidade</h3>
-    <p><strong>Viabilidade</strong> é a verificação de que a He-net já possui cobertura/atendimento no endereço do cliente. Só é possível instalar o serviço onde há infraestrutura disponível.</p>
-
-    <h3>1.2 Principais Solicitações dos Clientes</h3>
-    <div class="two-col">
-      <div class="card">
-        <div class="card-title">🔴 Problemas Técnicos</div>
-        <ul class="list">
-          <li>Sem conexão / Fibra rompida</li>
-          <li>Falha na rede</li>
-          <li>Lentidão</li>
-          <li>Intermitência (quedas na conexão)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-title">🔵 Questões Administrativas</div>
-        <ul class="list">
-          <li>Questões financeiras (boleto, plano)</li>
-          <li>Informações sobre planos</li>
-          <li>Mudança de titularidade</li>
-          <li>Cancelamento de serviço</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3>1.3 Causas Comuns de "Sem Conexão"</h3>
-    <ul class="list">
-      <li>Aparelho com fonte queimada</li>
-      <li>Roteador travado (necessita reinicialização)</li>
-      <li>Cabos conectados em porta incorreta</li>
-      <li>Roteador resetado — necessita reconfiguração</li>
-      <li>Fibra rompida / problema no conector</li>
-    </ul>
-
-    <div class="box box-tip">
-      <div class="box-icon">💡</div>
-      <div class="box-content">
-        <strong>Dica para novatos</strong>
-        Sempre confirme o tipo de equipamento do cliente (TP-Link, Nokia, Huawei, etc.) antes de orientar qualquer procedimento. Cada marca tem comportamentos diferentes.
-      </div>
-    </div>
-
-    <h3>1.4 DNS da He-net e do Google</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Servidor DNS</th><th>Primário</th><th>Secundário</th></tr></thead>
-        <tbody>
-          <tr><td><strong>He-net</strong></td><td><code>177.38.244.1</code></td><td><code>177.38.244.2</code></td></tr>
-          <tr><td><strong>Google</strong></td><td><code>8.8.8.8</code></td><td><code>8.8.4.4</code></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="box box-info">
-      <div class="box-icon">📌</div>
-      <div class="box-content">
-        <strong>Configuração padrão de DNS no roteador</strong>
-        No Flashman: DNS Primário = <code>8.8.8.8</code> / <code>8.8.4.4</code> (Google) · DNS Secundário = <code>177.38.244.1</code> / <code>177.38.244.2</code> (He-net). Sempre registre no protocolo qual DNS e canal foram configurados.
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════ CAPÍTULO 2 ══ -->
-  <div class="section" id="cap2">
-    <div class="section-header">
-      <div class="section-num">2</div>
-      <div>
-        <h2>Sistemas e Ferramentas</h2>
-        <div class="section-desc">Plataformas utilizadas no dia a dia do atendimento</div>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Sistema</th><th>Função Principal</th><th>Tipo</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>UNM</strong></td>
-            <td>Sistema Unificado de Monitoramento Técnico — monitorar ONU/ONT, configurar Wi-Fi, gerenciar conexões</td>
-            <td><span class="tag tag-blue">Técnico</span></td>
-          </tr>
-          <tr>
-            <td><strong>Flashman</strong></td>
-            <td>Gerenciamento remoto de equipamentos do cliente (CPEs / ONT / Roteadores). Usado para configurar roteador, mudar DNS, ver credenciais</td>
-            <td><span class="tag tag-blue">Técnico</span></td>
-          </tr>
-          <tr>
-            <td><strong>IXC Soft</strong></td>
-            <td>SISTEMA NOVO - Sistema ERP completo para gestão estratégica e operacional do provedor — verificar faturas, intermitência, dados do cliente</td>
-            <td><span class="tag tag-orange">Operacional</span></td>
-          </tr>
-            <td><strong>Matrix</strong></td>
-            <td>Plataforma de comunicação via mensagens com clientes</td>
-            <td><span class="tag tag-gray">Comunicação</span></td>
-          </tr>
-          <tr>
-            <td><strong>neWave</strong></td>
-            <td>Monitoramento de ligações telefônicas</td>
-            <td><span class="tag tag-gray">Comunicação</span></td>
-          </tr>
-            <td><strong>Slack</strong></td>
-            <td>Comunicação interna entre equipes</td>
-            <td><span class="tag tag-gray">Comunicação</span></td>
-          </tr>
-          <tr>
-            <td><strong>Minha Henet</strong></td>
-            <td>Aplicativo do cliente para geração e visualização de boletos. Login: CPF · Senha: 6 primeiros dígitos do CPF</td>
-            <td><span class="tag tag-green">Cliente</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="box box-alert">
-      <div class="box-icon">⚠️</div>
-      <div class="box-content">
-        <strong>Atenção — MAC com "CMS"</strong>
-        Se o MAC do equipamento do cliente começar com <strong>CMS</strong>, esse equipamento aparece na UNM, <strong>mas no Flashman não aparece</strong>. Nesse caso, para acessar as configurações precisa usar o <strong>IP da ONT</strong>  ou do roteador para acessar via web no Google Chrome.
-      </div>
-    </div>
-
-    <h3>2.1 Quando há dois logins no IXC</h3>
-    <p>Quando o cliente possui dois serviços (Internet + TV), cada serviço terá um login diferente na IXC. Exemplo:</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Login</th><th>Serviço</th></tr></thead>
-        <tbody>
-          <tr><td><code>12345667</code></td><td>Plano de TV</td></tr>
-          <tr><td><code>Maria123</code></td><td>Plano de Internet</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h3>1.3 DNS disponíveis</h3>
+    <div class="tw"><table><thead><tr><th>Servidor</th><th>Primário</th><th>Secundário</th></tr></thead><tbody>
+      <tr><td><strong>He-net</strong></td><td><code>177.38.244.1</code></td><td><code>177.38.244.2</code></td></tr>
+      <tr><td><strong>Google</strong></td><td><code>8.8.8.8</code></td><td><code>8.8.4.4</code></td></tr>
+      <tr><td><strong>OpenDNS</strong></td><td><code>208.67.222.222</code></td><td><code>208.67.220.220</code></td></tr>
+    </tbody></table></div>
+    <div class="box bi2"><div class="bi">📌</div><div class="bc"><strong>Padrão He-net no Flashman</strong>DNS Primário = <code>8.8.8.8</code> · DNS Secundário = <code>177.38.244.2</code>. Sempre registre no protocolo qual DNS e canal foram configurados.</div></div>
   </div>
 
-
-  <!-- ══════════════════════════════ CAPÍTULO 3 ══ -->
-  <div class="section" id="cap3">
-    <div class="section-header">
-      <div class="section-num">3</div>
-      <div>
-        <h2>Ramais e Setores</h2>
-        <div class="section-desc">Contatos internos para transferências e consultas</div>
-      </div>
-    </div>
-
-    <div class="box box-danger">
-      <div class="box-icon">📞</div>
-      <div class="box-content">
-        <strong>Para ligar para um cliente externo</strong>
-        Sempre adicionar o dígito <strong>0 (zero)</strong> antes do número do cliente ao realizar chamadas externas.
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th style="width: 130px;">Ramal</th><th>Setor</th><th>Quando Acionar</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><code>*2 3000#</code></td>
-            <td><strong>Suporte Técnico</strong></td>
-            <td>Problemas técnicos, configurações, equipamentos</td>
-          </tr>
-          <tr>
-            <td><code>*2 3001#</code></td>
-            <td><strong>Financeiro</strong></td>
-            <td>Boleto, pagamento, plano suspenso</td>
-          </tr>
-          <tr>
-            <td><code>*2 3002#</code></td>
-            <td><strong>Cancelamento</strong></td>
-            <td>Somente se não for possível reter o cliente</td>
-          </tr>
-          <tr>
-            <td><code>*2 3003#</code></td>
-            <td><strong>Comercial</strong></td>
-            <td>Mudança de plano (aumentar/diminuir), mudança de cômodo, mudança de endereço e troca de titularidade</td>
-          </tr>
-          <tr>
-            <td><code>*2 3004#</code></td>
-            <td><strong>Back Office (Geral)</strong></td>
-            <td>Confirmar atendimento presencial, antecipar visita técnica</td>
-          </tr>
-          <tr>
-            <td><code>*2 3005#</code></td>
-            <td><strong>NOC 2 — Planos Corporativos</strong></td>
-            <td>Atendimento corporativo, liberação de ONU, dúvidas técnicas especializadas</td>
-          </tr>
-          <tr>
-            <td><code>*2 3006#</code></td>
-            <td><strong>Crédito</strong></td>
-            <td>Questões de crédito</td>
-          </tr>
-          <tr>
-            <td><code>*2 3008#</code></td>
-            <td><strong>NOC 1</strong></td>
-            <td>Liberação de ONU, tirar dúvidas técnicas, identificar falhas</td>
-          </tr>
-          <tr>
-            <td><code>*2 3009#</code></td>
-            <td><strong>NOC 3</strong></td>
-            <td>Suporte técnico avançado</td>
-          </tr>
-	  <tr>
-            <td><code>*2 3024#</code></td>
-            <td><strong>Ilheus e Itabuna</strong></td>
-            <td>Backoffice responsável pelas Cidades</td>
-          </tr>
-	  <tr>
-            <td><code>*2 3024#</code></td>
-            <td><strong>Ilheus e Itabuna</strong></td>
-            <td>Backoffice responsável pelas Cidades</td>
-          </tr>
-	  <tr>
-            <td><code>*2 3034#</code></td>
-            <td><strong>Conquista e Jequie</strong></td>
-            <td>Backoffice responsável pelas Cidades</td>
-          </tr>
-	  <tr>
-            <td><code>*2 3044#</code></td>
-            <td><strong>Luiz Eduardo e Barreiras</strong></td>
-            <td>Backoffice responsável pelas Cidades</td>
-          </tr>
-	  <tr>
-            <td><code>*2 3054#</code></td>
-            <td><strong>Brumado, Caculé, Caitite, Guanambi, Licinio</strong></td>
-            <td>Backoffice responsável pelas Cidades</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="box box-tip">
-      <div class="box-icon">💡</div>
-      <div class="box-content">
-        <strong>Ao transferir para Cancelamento</strong>
-        Nunca transfira sem primeiro explicar o motivo do cancelamento ao atendente. Nunca "jogue" direto — sempre contextualize a situação do cliente antes de passar.
-      </div>
-    </div>
+  <div class="section" id="c2"><div class="sh"><div class="sn">2</div><div><h2>Sistemas e Ferramentas</h2><div class="sd">Plataformas do dia a dia</div></div></div>
+    <div class="tw"><table><thead><tr><th>Sistema</th><th>Função Principal</th><th>Tipo</th></tr></thead><tbody>
+      <tr><td><strong>UNM</strong></td><td>Monitoramento - ONUs, Wi-Fi, gerenciamento de conexões</td><td><span class="tag tb">Técnico</span></td></tr>
+      <tr><td><strong>Flashman</strong></td><td>Gerenciamento remoto de CPEs/roteadores. Configurar DNS, ver credenciais</td><td><span class="tag tb">Técnico</span></td></tr>
+      <tr><td><strong>IXC Soft</strong></td><td>SISTEMA NOVO - ERP completo. Verificar faturas, intermitência, dados</td><td><span class="tag to">Operacional</span></td></tr>
+      <tr><td><strong>Matrix</strong></td><td>Comunicação via mensagens com clientes</td><td><span class="tag tgy">Comunicação</span></td></tr>
+      <tr><td><strong>Slack</strong></td><td>Comunicação interna entre equipes</td><td><span class="tag tgy">Comunicação</span></td></tr>
+      <tr><td><strong>Minha Henet</strong></td><td>App do cliente para boletos. Login: CPF · Senha: 6 primeiros dígitos do CPF</td><td><span class="tag tg">Cliente</span></td></tr>
+    </tbody></table></div>
+    <div class="box ba"><div class="bi">⚠️</div><div class="bc"><strong>MAC com "CMS"</strong>Se o MAC começa com <strong>CMS</strong>, aparece na UNM mas <strong>não no Flashman</strong>. Usar o <strong>IP da ONT</strong> ou do roteador para acessar via Google Chrome.</div></div>
+    <h3>2.1 Dois logins no IXC (Internet + TV)</h3>
+    <div class="tw"><table><thead><tr><th>Login</th><th>Serviço</th></tr></thead><tbody>
+      <tr><td><code>12345667</code></td><td>Plano de TV</td></tr>
+      <tr><td><code>Maria123</code></td><td>Plano de Internet</td></tr>
+    </tbody></table></div>
   </div>
 
-
-  <!-- ══════════════════════════════ CAPÍTULO 4 ══ -->
-  <div class="section" id="cap4">
-    <div class="section-header">
-      <div class="section-num">4</div>
-      <div>
-        <h2>Procedimentos na UNM</h2>
-        <div class="section-desc">Funções e operações do sistema de monitoramento</div>
-      </div>
-    </div>
-
-    <div class="img-placeholder">
-    <img src="https://i.postimg.cc/gJZ9M9nW/Captura-de-tela-UNM.png" alt="Tela da UNM mostrando o menu Service Configuration com subseções de Wifi e DHCP" style="max-width: 100%; height: auto;">
-</div>
-
-    <h3>4.1 Funcionalidades por Seção — Service Configuration</h3>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Seção na UNM</th><th>O que fazer / Para que serve</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Wifi Service Config</strong></td><td>Trocar nome da rede Wi-Fi e senha · Trocar canal da rede · Habilitar/desabilitar redes do cliente · Mudar frequência</td></tr>
-          <tr><td><strong>User DHCP Server Parameter</strong></td><td>Mudar DNS do cliente (atenção: o DNS secundário é o campo "DHCP Sec DNS")</td></tr>
-          <tr><td><strong>Port Status Information</strong></td><td>Ver em qual porta do roteador o cabo de rede está conectado</td></tr>
-          <tr><td><strong>MAC Learning Table on ONU</strong></td><td>Verificar quantos aparelhos estão conectados à rede</td></tr>
-          <tr><td><strong>Veip Data Service Config</strong></td><td>Verificar ou trocar WAN-VLAN (especialmente para equipamentos Huawei)</td></tr>
-          <tr><td><strong>Wan Service</strong></td><td>Mudar nome e senha do PPPoE · Ver tipo de conexão · Verificar WAN-VLAN</td></tr>
-          <tr><td><strong>ONU Local Manage Interface</strong></td><td>Habilitar ou desabilitar o acesso local à interface do equipamento</td></tr>
-          <tr><td><strong>Web Administrator Config</strong></td><td>Alterar Web Username e Web Password do roteador</td></tr>
-          <tr><td><strong>Information of Wifi Neighbors</strong></td><td>Verificar frequências de outros aparelhos Wi-Fi próximos (interferência de canal)</td></tr>
-          <tr><td><strong>Restore Default Configure</strong></td><td>Executar restore no roteador remotamente</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>4.2 WAN-VLAN — Regra de Configuração</h3>
-    <p>A WAN-VLAN do cliente sempre deve ser o <strong>número do ramal com o dígito 3 na frente</strong>.</p>
-
-    <div class="box box-info">
-      <div class="box-icon">📌</div>
-      <div class="box-content">
-        <strong>Exemplo prático</strong>
-        Cliente com ramal 149 → WAN-VLAN correta = <code>3149</code>. Se a WAN-VLAN estiver diferente do padrão, ajuste imediatamente.
-      </div>
-    </div>
-
-    <h3>4.3 Indicadores de IP — O que significam</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Prefixo do Last IP</th><th>Situação</th><th>Ação</th></tr></thead>
-        <tbody>
-          <tr><td><code>10.x.x.x</code></td><td>Plano Suspenso / Login Bloqueado</td><td>Verificar fatura em aberto no IXC. Resolver: salvar/trocar senha e reiniciar ONU</td></tr>
-          <tr><td><code>192-100.x.x.x</code></td><td>IP PRIVADO, cliente sem acesso à rede.</td><td>Verificar configurações, verificar PPPoE</td></tr>
-	  <tr><td><code>Outros.x.x.x</code></td><td>IP PÚBLICO, cliente com acesso à rede.</td><td>Verificar configurações, verificar PPPoE</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p><em>Verificar o Last IP no extrato de conexão no IXC/UNM.</em></p>
-
-    <h3>4.4 Troca de Titularidade na UNM</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Selecione o cliente com <strong>botão direito</strong> sobre o nome na UNM (na primeira parte, após usar Ctrl+F para localizar)</div></div>
-	<div class="step"><div class="step-num">2</div><div class="step-body">Clique em atribute</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Altere o nome e o código para os dados do <strong>novo titular</strong></div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body">Confirme e salve as alterações</div></div>
-    </div>
+  <div class="section" id="c3"><div class="sh"><div class="sn">3</div><div><h2>Ramais e Setores</h2><div class="sd">Contatos internos para transferências</div></div></div>
+    <div class="box bd2"><div class="bi">📞</div><div class="bc"><strong>Ligação para cliente externo</strong>Sempre adicionar o dígito <strong>0 (zero)</strong> antes do número ao realizar chamadas externas.</div></div>
+    <div class="tw"><table><thead><tr><th style="width:120px">Ramal</th><th>Setor</th><th>Quando Acionar</th></tr></thead><tbody>
+      <tr><td><code>*2 3000#</code></td><td><strong>Suporte Técnico</strong></td><td>Problemas técnicos, configurações, equipamentos</td></tr>
+      <tr><td><code>*2 3001#</code></td><td><strong>Financeiro</strong></td><td>Boleto, pagamento, plano suspenso</td></tr>
+      <tr><td><code>*2 3002#</code></td><td><strong>Cancelamento</strong></td><td>Somente se não for possível reter o cliente</td></tr>
+      <tr><td><code>*2 3003#</code></td><td><strong>Comercial</strong></td><td>Mudança de plano, endereço, troca de titularidade</td></tr>
+      <tr><td><code>*2 3004#</code></td><td><strong>Back Office</strong></td><td>Confirmar atendimento presencial, antecipar visita</td></tr>
+      <tr><td><code>*2 3005#</code></td><td><strong>NOC 2 - Corporativo</strong></td><td>Suporte avançado para contratos CNPJ</td></tr>
+      <tr><td><code>0800 000 9700</code></td><td><strong>Central 0800</strong></td><td>Canal de cancelamento com o titular do contrato</td></tr>
+    </tbody></table></div>
   </div>
 
+  <div class="section" id="c4"><div class="sh"><div class="sn">4</div><div><h2>Procedimentos na UNM</h2><div class="sd">Funções e operações do sistema de monitoramento</div></div></div>
+    <div class="ip"><img src="https://i.postimg.cc/gJZ9M9nW/Captura-de-tela-UNM.png" alt="Tela da UNM"></div>
+    <h3>4.1 Seções - Service Configuration</h3>
+    <div class="tw"><table><thead><tr><th>Seção na UNM</th><th>O que fazer</th></tr></thead><tbody>
+      <tr><td><strong>Wifi Service Config</strong></td><td>Trocar nome/senha Wi-Fi · Canal · Habilitar/desabilitar redes · Mudar frequência</td></tr>
+      <tr><td><strong>User DHCP Server Parameter</strong></td><td>Mudar DNS ("DHCP Sec DNS" = DNS secundário)</td></tr>
+      <tr><td><strong>Port Status Information</strong></td><td>Ver em qual porta do roteador o cabo está conectado</td></tr>
+      <tr><td><strong>MAC Learning Table on ONU</strong></td><td>Verificar quantos aparelhos estão conectados</td></tr>
+      <tr><td><strong>Veip Data Service Config</strong></td><td>Verificar/trocar WAN-VLAN (especialmente Huawei)</td></tr>
+      <tr><td><strong>Wan Service</strong></td><td>Mudar nome/senha PPPoE · Ver tipo de conexão</td></tr>
+      <tr><td><strong>Restore Default Configure</strong></td><td>Executar restore no roteador remotamente</td></tr>
+    </tbody></table></div>
+    <h3>4.2 WAN-VLAN - Regra</h3>
+    <div class="box bi2"><div class="bi">📌</div><div class="bc"><strong>Exemplo prático</strong>Ramal 149 → WAN-VLAN correta = <code>3149</code>. Se diferente, ajustar imediatamente.</div></div>
+    <h3>4.3 Indicadores de IP</h3>
+    <div class="tw"><table><thead><tr><th>Prefixo Last IP</th><th>Situação</th><th>Ação</th></tr></thead><tbody>
+      <tr><td><code>10.x.x.x</code></td><td>Plano Suspenso / Bloqueado</td><td>Verificar fatura no IXC. Salvar/trocar senha e reiniciar ONU</td></tr>
+      <tr><td><code>192-100.x.x.x</code></td><td>IP PRIVADO - sem acesso</td><td>Verificar configurações, verificar PPPoE</td></tr>
+      <tr><td>Outros</td><td>IP PÚBLICO - com acesso</td><td>Verificar configurações normalmente</td></tr>
+    </tbody></table></div>
+  </div>
 
-  <!-- ══════════════════════════════ CAPÍTULO 5 ══ -->
-  <div class="section" id="cap5">
-    <div class="section-header">
-      <div class="section-num">5</div>
-      <div>
-        <h2>Diagnóstico de Problemas</h2>
-        <div class="section-desc">Alarmes, tipos de falha e procedimentos de identificação</div>
-      </div>
-    </div>
-
+  <div class="section" id="c5"><div class="sh"><div class="sn">5</div><div><h2>Diagnóstico de Problemas</h2><div class="sd">Alarmes, tipos de falha e classificação</div></div></div>
     <h3>5.1 Tipos de Alarme na UNM</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Alarme</th><th>Significado</th><th>Causa Comum</th><th style="width: 120px;">Tipo de OS</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="tag tag-red">LINKLOSS</span></td>
-            <td>Perda de link óptico</td>
-            <td>Rompimento de fibra, problema no conector, dobra na fibra</td>
-            <td><span class="tag tag-orange">Tipo 3</span></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-orange">DYINGGASP</span></td>
-            <td>Falta de energia no equipamento</td>
-            <td>Cabo de energia desconectado, fonte queimada, queda de energia</td>
-            <td><span class="tag tag-blue">Tipo 1 ou 3</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="box box-alert">
-      <div class="box-icon">⚠️</div>
-      <div class="box-content">
-        <strong>Atenção ao nível de sinal óptico</strong>
-        Sinal acima de <strong>-26,98</strong> (sinal alto/fora do padrão) pode indicar dobra na fibra ou problema no conector. Nesse caso, é necessário agendar <strong>atendimento presencial</strong>.
-      </div>
-    </div>
-
-    <h3>5.2 Classificação de "Sem Conexão" — Tipo 1 vs Tipo 3</h3>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Tipo</th><th>Condição IXC/Radius</th><th>Condição ONU/UNM</th><th>Alarme</th><th>Luz Vermelha?</th></tr></thead>
-        <tbody>
-          <tr>
-            <td rowspan="4"><span class="tag tag-blue">Tipo 1</span></td>
-            <td>Desconectado</td><td>ONU conectado</td><td>—</td><td>—</td>
-          </tr>
-          <tr>
-            <td>Conectado</td><td>ONU conectado, ainda sem conexão</td><td>—</td><td>—</td>
-          </tr>
-          <tr>
-            <td>Desconectado</td><td>ONU desconectado</td><td>DYINGGASP</td><td>❌ Sem luz vermelha</td>
-          </tr>
-          <tr>
-            <td>Desconectado</td><td>ONU desconectado OFFLINE</td><td>—</td><td>❌ Sem luz vermelha</td>
-          </tr>
-          <tr>
-            <td rowspan="3"><span class="tag tag-orange">Tipo 3</span></td>
-            <td>Desconectado</td><td>ONU desconectado</td><td>LINKLOSS</td><td>✅ ou ❌</td>
-          </tr>
-          <tr>
-            <td>Desconectado</td><td>ONU desconectado</td><td>DYINGGASP</td><td>✅ Com luz vermelha</td>
-          </tr>
-          <tr>
-            <td>Desconectado</td><td>ONU desconectado OFFLINE</td><td>—</td><td>✅ Com luz vermelha</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>5.3 Redes Wi-Fi — 2.4 GHz vs 5 GHz</h3>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Frequência</th><th>Velocidade</th><th>Alcance</th><th>Compatibilidade</th><th>Melhor para</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>2.4 GHz</strong></td>
-            <td><span class="tag tag-orange">Menor</span></td>
-            <td><span class="tag tag-green">Maior</span></td>
-            <td>Todos os dispositivos</td>
-            <td>Cobertura ampla, dispositivos distantes, impressoras</td>
-          </tr>
-          <tr>
-            <td><strong>5 GHz</strong></td>
-            <td><span class="tag tag-green">Maior</span></td>
-            <td><span class="tag tag-orange">Menor</span></td>
-            <td>Dispositivos mais recentes</td>
-            <td>Melhor Velocidade compatível com 500mb, dispositivos próximos ao roteador</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>5.4 IXC/Radius Desconectado — Procedimento</h3>
-    <p>Quando o PPPoE não aparece ou a conexão cai com IXC/Radius desconectado, escreva no protocolo: <strong>"IXC/Radius desconectado"</strong>  - e siga esse passo a passo abaixo:</p>
-
+    <div class="tw"><table><thead><tr><th>Alarme</th><th>Significado</th><th>Causa</th><th>Tipo OS</th></tr></thead><tbody>
+      <tr><td><span class="tag tr">LINKLOSS</span></td><td>Perda de link óptico</td><td>Rompimento de fibra, dobra, problema no conector</td><td><span class="tag to">Tipo 3</span></td></tr>
+      <tr><td><span class="tag to">DYINGGASP</span></td><td>Falta de energia no equipamento</td><td>Cabo desconectado, fonte queimada, queda de energia</td><td><span class="tag tb">Tipo 1 ou 3</span></td></tr>
+    </tbody></table></div>
+    <div class="box ba"><div class="bi">⚠️</div><div class="bc"><strong>Nível de sinal óptico</strong>Sinal acima de <strong>-26,98</strong> (sinal alto) pode indicar dobra na fibra ou problema no conector. Agendar <strong>visita presencial urgente</strong>.</div></div>
+    <h3>5.2 Tipo 1 vs Tipo 3 - Sem Conexão</h3>
+    <div class="tw"><table><thead><tr><th>Tipo</th><th>IXC/Radius</th><th>ONU/UNM</th><th>Alarme</th><th>Luz Vermelha?</th></tr></thead><tbody>
+      <tr><td rowspan="2"><span class="tag tb">Tipo 1</span></td><td>Desconectado</td><td>ONU conectado</td><td>-</td><td>❌ Não</td></tr>
+      <tr><td>Desconectado</td><td>ONU desconectado</td><td>DYINGGASP</td><td>❌ Sem luz vermelha</td></tr>
+      <tr><td rowspan="2"><span class="tag to">Tipo 3</span></td><td>Desconectado</td><td>ONU desconectado</td><td>LINKLOSS</td><td>✅ ou ❌</td></tr>
+      <tr><td>Desconectado</td><td>ONU desconectado</td><td>DYINGGASP</td><td>✅ Com luz vermelha</td></tr>
+    </tbody></table></div>
+    <h3>5.3 2.4GHz vs 5GHz</h3>
+    <div class="tw"><table><thead><tr><th>Frequência</th><th>Velocidade</th><th>Alcance</th><th>Melhor para</th></tr></thead><tbody>
+      <tr><td><strong>2.4 GHz</strong></td><td><span class="tag to">Menor</span></td><td><span class="tag tg">Maior</span></td><td>Cobertura ampla, dispositivos distantes, impressoras</td></tr>
+      <tr><td><strong>5 GHz</strong></td><td><span class="tag tg">Maior</span></td><td><span class="tag to">Menor</span></td><td>Velocidade, planos acima de 100Mb, próximos ao roteador</td></tr>
+    </tbody></table></div>
+    <h3>5.4 IXC/Radius Desconectado - Procedimento</h3>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Verificar se a WAN-LAN está conectada na UNM</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Dar restore na UNM e pedir ao cliente para reiniciar o roteador</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Se for TP-Link e o cabo estiver "linkando": verificar VLAN</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body">Se o cliente for de <strong>Itabuna</strong> com IP Público habilitado: <strong>desabilitar o IP Público</strong> — pode resolver</div></div>
+      <div class="step"><div class="step-n">1</div><div class="step-b">Verificar se a WAN-LAN está conectada na UNM</div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-b">Dar restore na UNM e pedir ao cliente reiniciar o roteador</div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-b">Se for TP-Link e o cabo estiver "linkando": verificar VLAN</div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-b">Se cliente for de <strong>Itabuna</strong> com IP Público: <strong>desabilitar IP Público</strong></div></div>
     </div>
   </div>
 
+  <div class="section" id="c6"><div class="sh"><div class="sn">6</div><div><h2>Ordens de Serviço (OS)</h2><div class="sd">Como abrir, classificar e registrar OS</div></div></div>
+    <div class="box bt"><div class="bi">📋</div><div class="bc"><strong>Regra geral</strong>O título da OS deve corresponder ao título do protocolo. Sempre coloque o protocolo como <strong>resolvido</strong> ao finalizar.</div></div>
+    <h3>6.1 Fluxo de Abertura de OS</h3>
+    <div class="tw"><table><thead><tr><th>Situação</th><th>Tipo de OS / Ação</th></tr></thead><tbody>
+      <tr><td>Sem Conexão - Tipo 1 (sem LINKLOSS)</td><td><span class="tag tb">Sem Conexão Tipo 1</span></td></tr>
+      <tr><td>Sem Conexão - Tipo 3 (com LINKLOSS ou DYINGGASP + luz vermelha)</td><td><span class="tag to">Sem Conexão Tipo 3</span></td></tr>
+      <tr><td>Visita com menos de 30 dias + instabilidade</td><td>Encaminhar para <strong>Suporte Nível 2</strong> - OS de Reincidência</td></tr>
+      <tr><td>Configuração &lt; 24h</td><td>Abrir protocolo <strong>por cima</strong> do anterior</td></tr>
+      <tr><td>Configuração &gt; 24h</td><td>Abrir <strong>novo protocolo</strong></td></tr>
+      <tr><td>Atendimento aberto errado</td><td>Registrar como <strong>"ERRO DE ABERTURA"</strong></td></tr>
+    </tbody></table></div>
+    <h3>6.2 O que registrar no Protocolo de Configuração</h3>
+    <ul class="li"><li>DNS configurado (primário e secundário)</li><li>Canal de rede definido</li><li>Se foi feito restore, reinicialização ou troca de senha</li></ul>
+    <div class="box ba"><div class="bi">⚠️</div><div class="bc"><strong>Configuração há menos de 30 dias</strong>Caso de reincidência: obrigatório passar pelo NOC antes de agendar nova OS.</div></div>
+  </div>
 
-  <!-- ══════════════════════════════ CAPÍTULO 6 ══ -->
-  <div class="section" id="cap6">
-    <div class="section-header">
-      <div class="section-num">6</div>
-      <div>
-        <h2>Ordens de Serviço (OS)</h2>
-        <div class="section-desc">Como abrir, classificar e registrar OS corretamente</div>
-      </div>
+  <div class="section" id="c7"><div class="sh"><div class="sn">7</div><div><h2>Conhecendo o Roteador</h2><div class="sd">Hardware, portas, velocidade e marcas</div></div></div>
+    <div class="ip"><img src="https://i.postimg.cc/KjZWYqyX/Esquema-de-conexao.png" alt="Esquema de conexão - Fibra → ONU → Roteador"></div>
+    <h3>7.1 Portas WAN e LAN</h3>
+    <div class="tc">
+      <div class="card"><div class="ct">🌐 WAN</div><p style="font-size:13.5px">Porta do link <strong>externo</strong> - conecta o cabo vindo da ONU. Representa a internet.</p></div>
+      <div class="card"><div class="ct">🏠 LAN</div><p style="font-size:13.5px">Portas internas - conectam computadores, notebooks, etc. Geralmente 4 LAN + 1 WAN.</p></div>
     </div>
-
-    <div class="box box-tip">
-      <div class="box-icon">📋</div>
-      <div class="box-content">
-        <strong>Regra geral sobre protocolos</strong>
-        O título da OS deve corresponder ao título do protocolo de atendimento. Sempre coloque o protocolo como <strong>resolvido</strong> ao finalizar.
-      </div>
+    <h3>7.2 Taxa de Transmissão e Impacto no Plano</h3>
+    <div class="box bi2"><div class="bi">📌</div><div class="bc"><strong>Como interpretar o modelo</strong>Ex: <code>TL-WR340G54M</code> → 54 Mbps máximo. A taxa é a soma download+upload - o download real é ~50% desse valor.</div></div>
+    <div class="tw"><table><thead><tr><th>Transmissão do roteador</th><th>Download real (aprox.)</th><th>Plano suportado</th></tr></thead><tbody>
+      <tr><td>54 Mbps (protocolo G)</td><td>~24 Mbps</td><td>Até 20 Mbps</td></tr>
+      <tr><td>150 Mbps</td><td>~70 Mbps</td><td>Até 60 Mbps</td></tr>
+      <tr><td>300 Mbps (2 antenas)</td><td>~150 Mbps</td><td>Até 150 Mbps</td></tr>
+    </tbody></table></div>
+    <h3>7.3 Velocidade das Portas Físicas</h3>
+    <div class="tw"><table><thead><tr><th>Padrão</th><th>Nome</th><th>Velocidade Máxima</th></tr></thead><tbody>
+      <tr><td><code>10/100</code></td><td>Fast Ethernet</td><td>100 Mbps</td></tr>
+      <tr><td><code>10/100/1000</code></td><td>Gigabit</td><td>1 Gbps</td></tr>
+    </tbody></table></div>
+    <div class="box ba"><div class="bi">⚠️</div><div class="bc"><strong>Atenção ao cabo de rede</strong>Cabo correto: <strong>UTP</strong> (não "UPT") com conector <strong>RJ45</strong> (não "RJ4S").</div></div>
+    <h3>7.4 Marcas Homologadas He-net</h3>
+    <div class="tc">
+      <ul class="li"><li>TP-Link</li><li>D-Link</li><li>Multilaser</li></ul>
+      <ul class="li"><li>Intelbras</li><li>Link One</li></ul>
     </div>
+    <h3>7.5 Botões do Roteador</h3>
+    <div class="tw"><table><thead><tr><th>Botão</th><th>Função</th><th>Quando Usar</th></tr></thead><tbody>
+      <tr><td><strong>Reset</strong></td><td>Restaura fábrica</td><td>Apenas quando orientado - apaga todas as configurações</td></tr>
+      <tr><td><strong>WPS</strong></td><td>Pareamento sem digitar senha</td><td>Para conectar impressoras e dispositivos IoT</td></tr>
+      <tr><td><strong>Wi-Fi</strong> (Nokia)</td><td>Habilita/desabilita Wi-Fi</td><td>Quando as redes somem em equipamentos Nokia</td></tr>
+    </tbody></table></div>
+  </div>
 
-    <h3>6.1 Fluxo para Abertura de OS</h3>
+  <div class="section" id="c8"><div class="sh"><div class="sn">8</div><div><h2>ONU vs ONT & Fabricantes</h2><div class="sd">Equipamentos ópticos na He-net</div></div></div>
+    <div class="box bt"><div class="bi">📡</div><div class="bc"><strong>Cadeia de conexão</strong>Fibra óptica → <strong>ONU/ONT</strong> (converte para sinal elétrico) → Cabo UTP → Roteador → Dispositivos</div></div>
+    <h3>8.1 Modelos e Fabricantes</h3>
+    <div class="tw"><table><thead><tr><th>Fabricante</th><th>Sigla UNM</th><th>Observação de Acesso</th></tr></thead><tbody>
+      <tr><td><strong>Nokia</strong></td><td>ALCL</td><td>Acesso padrão via UNM/Flashman</td></tr>
+      <tr><td><strong>Huawei</strong></td><td>HWTC</td><td>WAN-VLAN via "Veip Data Service Config". Painel: via IP no Google Chrome</td></tr>
+      <tr><td><strong>Fiberhome</strong></td><td>-</td><td>Habilitar em "Port Service" → "ONU Local Manage". Buscar MAC no Flashman em "Credenciais da Interface"</td></tr>
+    </tbody></table></div>
+    <div class="box ba"><div class="bi">⚠️</div><div class="bc"><strong>Fiberhome HG6143D3 - Bug conhecido</strong>Falha de hardware no módulo 2.4GHz. Procedimentos remotos não resolvem. Abrir OS de <strong>Troca de Equipamento</strong>. Não informar ao cliente que é troca.</div></div>
+  </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Situação do Atendimento</th><th>Tipo de OS / Ação</th></tr></thead>
-        <tbody>
-          <tr><td>Sem Conexão — Tipo 1 (sem alarme LINKLOSS)</td><td>Abrir OS <span class="tag tag-blue">Sem Conexão Tipo 1</span></td></tr>
-          <tr><td>Sem Conexão — Tipo 3 (com LINKLOSS ou DYINGGASP + luz vermelha)</td><td>Abrir OS <span class="tag tag-orange">Sem Conexão Tipo 3</span></td></tr>
-          <tr><td>Visita com menos de 30 dias + instabilidade</td><td>Encaminhar para <strong>Suporte Nível 2</strong> via OS de Reincidência</td></tr>
-          <tr><td>Configuração < 24h (auto atendimento)</td><td>Abrir protocolo <strong>por cima</strong> do protocolo anterior</td></tr>
-          <tr><td>Configuração > 24h</td><td>Abrir <strong>novo protocolo</strong></td></tr>
-          <tr><td>Atendimento aberto errado</td><td>Registrar como <strong>"ERRO DE ABERTURA"</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>6.2 Protocolo de Configuração Recente</h3>
-    <div class="box box-alert">
-      <div class="box-icon">⚠️</div>
-      <div class="box-content">
-        <strong>Configuração há menos de 30 dias</strong>
-        Se o cliente teve configuração nos últimos 30 dias e relata instabilidade, será necessário agendar visita técnica com acompanhamento do <strong>Suporte Nível 2</strong>. O cliente precisará responder algumas perguntas antes do agendamento.
-      </div>
-    </div>
-
-    <h3>6.3 O que registrar no Protocolo de Configuração</h3>
-    <ul class="list">
-      <li>Qual DNS foi configurado (primário e secundário)</li>
-      <li>Qual canal de rede foi definido</li>
-      <li>Se foi feito restore, reinicialização ou troca de senha</li>
+  <div class="section" id="c9"><div class="sh"><div class="sn">9</div><div><h2>PPPoE e Configurações</h2><div class="sd">Protocolo de autenticação e credenciais</div></div></div>
+    <div class="box bt"><div class="bi">💡</div><div class="bc"><strong>Fluxo PPPoE</strong>Provedor → ONU (Bridge) → Roteador (autentica com login/senha PPPoE) → Dispositivos</div></div>
+    <h3>9.1 Padrão de Novo PPPoE</h3>
+    <div class="box bi2"><div class="bi">📌</div><div class="bc"><strong>Como criar PPPoE</strong><ul class="li" style="margin-top:6px"><li><strong>Login:</strong> nome em minúsculo + 3 primeiros dígitos do código. Ex.: <code>claudiane320</code></li><li><strong>Senha:</strong> código completo do cliente. Ex.: <code>320172</code></li></ul>Após criar: configure no <strong>Flashman</strong> e verifique na <strong>UNM</strong>.</div></div>
+    <h3>9.2 Ordem de Configuração - OBRIGATÓRIA</h3>
+    <div class="box bd2"><div class="bi">🔴</div><div class="bc"><strong>Sempre nesta ordem:</strong><ol class="li" style="margin-top:6px"><li>Configurar primeiro no <strong>Flashman</strong></li><li>Verificar na <strong>UNM</strong> se foi salvo</li></ol>Nunca inverter a ordem - vale para lentidão e troca de senha.</div></div>
+    <h3>9.3 IP Público</h3>
+    <ul class="li">
+      <li><strong>Habilitar:</strong> quando cliente não consegue conectar câmera de segurança (junto com desabilitar Port Isolation)</li>
+      <li><strong>Desabilitar:</strong> quando cliente de Itabuna está sem conexão com IXC/Radius desconectado e UNM online</li>
     </ul>
   </div>
 
-
-  <!-- ══════════════════════════════ CAPÍTULO 7 ══ -->
-  <div class="section" id="cap7">
-    <div class="section-header">
-      <div class="section-num">7</div>
-      <div>
-        <h2>Conhecendo o Roteador</h2>
-        <div class="section-desc">Fundamentos de hardware, portas, frequências e desempenho</div>
-      </div>
-    </div>
-
-    <div class="img-placeholder">
-    <img src="https://i.postimg.cc/KjZWYqyX/Esquema-de-conexao.png" alt="Esquema de conexão — Fibra óptica → ONU/ONT (conversor) → Cabo de rede UTP RJ45 → Roteador TP-Link, com indicação das portas WAN e LAN" style="max-width: 100%; height: auto;">
-</div>
-
-    <h3>7.1 O que é um Roteador</h3>
-    <p>O roteador é um equipamento <strong>Indoor</strong> (uso interno), responsável por:</p>
-    <ul class="list">
-      <li>Converter o sinal cabeado (tecnologia 802.3) para Wi-Fi (802.11) — essa conversão gera uma pequena elevação no ping</li>
-      <li>Definir as melhores rotas para o tráfego de dados na rede local</li>
-      <li>Aumentar a quantidade de portas Ethernet disponíveis na rede</li>
-      <li>Compartilhar mídias em rede via porta USB/LAN (em modelos compatíveis)</li>
-    </ul>
-
-    <div class="box box-alert">
-      <div class="box-icon">⚠️</div>
-      <div class="box-content">
-        <strong>Limitação do uso residencial</strong>
-        Roteadores Home (residenciais) não suportam grandes larguras de banda nem alto número de dispositivos simultâneos. Não são adequados para cobrir eventos com muitas pessoas.
-      </div>
-    </div>
-
-    <h3>7.2 Portas WAN e LAN</h3>
-    <div class="two-col">
-      <div class="card">
-        <div class="card-title">🌐 WAN — Wide Area Network</div>
-        <p style="font-size:14px">Porta destinada ao link <strong>externo</strong>. Faz a comunicação com a internet. É onde se conecta o cabo vindo da ONU. Representa a rede de longo alcance que pode cobrir países ou continentes.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">🏠 LAN — Local Area Network</div>
-        <p style="font-size:14px">Portas destinadas à distribuição do link <strong>internamente</strong>. É onde se conectam computadores, notebooks, etc. Roteadores convencionais têm geralmente 4 portas LAN + 1 WAN.</p>
-      </div>
-    </div>
-
-    <h3>7.3 Taxa de Transmissão Wi-Fi e Impacto no Plano</h3>
-
-    <div class="box box-info">
-      <div class="box-icon">📌</div>
-      <div class="box-content">
-        <strong>Como interpretar o modelo do roteador</strong>
-        Exemplo: <code>TL-WR340G54M</code> → taxa máxima de 54 Mbps (protocolo G). Mesmo contratando 500 Mbps, o Wi-Fi ficará limitado a 54 Mbps. A taxa indicada é a <strong>soma</strong> do download + upload — logo, o download real será em torno de 50% desse valor.
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Transmissão do roteador</th><th>Máximo real via Wi-Fi (aprox.)</th><th>Plano que suporta bem</th></tr></thead>
-        <tbody>
-          <tr><td>54 Mbps (protocolo G)</td><td>~24 Mbps download</td><td>Até 20 Mbps</td></tr>
-          <tr><td>150 Mbps</td><td>~70 Mbps download</td><td>Até 60 Mbps</td></tr>
-          <tr><td>300 Mbps (2 antenas)</td><td>~150 Mbps download</td><td>Até 150 Mbps</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>7.4 Antenas e Capacidade de Transmissão</h3>
-    <p>Quanto mais antenas, maior a capacidade de transmissão e a vazão de dados. Exemplo: roteador de 300 Mbps com 2 antenas transmite 150 Mbps em cada antena.</p>
-
-    <h3>7.5 Velocidade das Portas Físicas</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Padrão</th><th>Nome</th><th>Velocidade Máxima</th></tr></thead>
-        <tbody>
-          <tr><td><code>10/100</code></td><td>Fast Ethernet</td><td>100 Mbps</td></tr>
-          <tr><td><code>10/100/1000</code></td><td>Gigabit</td><td>1 Gbps (1.000 Mbps)</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="box box-alert">
-      <div class="box-icon">⚠️</div>
-      <div class="box-content">
-        <strong>Atenção ao cabo de rede</strong>
-        O cabo correto é o <strong>UTP</strong> (e não "UPT") com conector <strong>RJ45</strong> (e não "RJ4S"). Verifique sempre se o cliente está usando o cabo adequado.
-      </div>
-    </div>
-
-    <h3>7.6 Marcas Homologadas He-net</h3>
-    <div class="two-col">
-      <ul class="list">
-        <li>TP-Link</li>
-        <li>D-Link</li>
-        <li>Multilaser</li>
-      </ul>
-      <ul class="list">
-        <li>Intelbras</li>
-        <li>Link One</li>
-      </ul>
-    </div>
-    <p style="font-size:13px;color:var(--gray-600)">Ao configurar diferentes marcas, a interface pode variar, mas os parâmetros configurados são sempre os mesmos.</p>
-
-    <h3>7.7 Botões do Roteador — Quando Usar</h3>
-
-    <div class="img-placeholder">
-    <img src="https://i.postimg.cc/kGp25Htm/Roteador-TP-Link.png" alt="Roteador TP-Link com destaque nos botões Power, Reset e WPS e descrição de cada um" style="max-width: 100%; height: auto;">
-</div>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Botão</th><th>Situação de Uso</th><th>Procedimento</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="tag tag-green">POWER</span></td>
-            <td>IXC/Radius desconectado + alarme DYINGGASP na UNM + todos cabos conectados + nenhuma luz no aparelho</td>
-            <td>Solicitar que o cliente pressione o botão Power até que as luzes retornem. Se não funcionar, enviar técnico.</td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-orange">RESET</span></td>
-            <td>Apenas para TP-Link ou Intelbras. Após verificar WAN-VLAN, cabo linkando e conectado, IXC/Radius desconectado e UNM online</td>
-            <td>Auxiliar o cliente a realizar o reset. Ver procedimento detalhado na seção 7.8.</td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-blue">WPS</span></td>
-            <td>TP-Link quando a rede Wi-Fi não aparece e o roteador não foi resetado. Também usado para conectar impressoras à rede 2.4G</td>
-            <td>Pressionar o botão WPS no roteador; também habilitar via interface web para conectar impressoras.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>7.8 Procedimento Completo de Reset do Roteador (TP-Link)</h3>
-
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Verificar se o cliente tem acesso à <strong>parte de baixo do aparelho</strong> (onde fica a senha padrão de fábrica)</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Solicitar que pressione o botão <strong>Reset</strong> (User) com auxílio de um palito ou agulha, até as luzes apagarem/acenderem</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Aguardar aparecer um novo nome de rede — ex.: rede padrão <strong>TP-LINK</strong> (quando resetado, o roteador exibe o nome padrão de fábrica)</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body">Conectar à rede usando a <strong>senha PIN</strong> impressa no fundo do aparelho (sequência numérica)</div></div>
-      <div class="step"><div class="step-num">5</div><div class="step-body">Acessar a interface via celular ou computador, no navegador (Google Chrome): <code>192.168.0.1</code> ou <code>192.168.0.2</code></div></div>
-      <div class="step"><div class="step-num">6</div><div class="step-body">Inserir a senha de acesso ao painel. Senhas padrão: <code>henet9700</code> | <code>admin</code> | <code>64312600</code></div></div>
-      <div class="step"><div class="step-num">7</div><div class="step-body">Configurar: <strong>usuário e senha PPPoE</strong>, nome e senha da rede Wi-Fi (2.4G e 5G), DNS primário e secundário</div></div>
-      <div class="step"><div class="step-num">8</div><div class="step-body">Verificar se foi salvo na <strong>UNM</strong> após configurar no Flashman</div></div>
-    </div>
-
-    <div class="box box-danger">
-      <div class="box-icon">🔑</div>
-      <div class="box-content">
-        <strong>Senhas padrão do roteador TP-Link (He-net)</strong>
-        <code>henet9700</code> &nbsp;|&nbsp; <code>admin</code> &nbsp;|&nbsp; <code>64312600</code>
-        <br><em>Use essas senhas somente após reset. Nunca compartilhe com clientes externos.</em>
-      </div>
-    </div>
-
-    <h3>7.9 Identificação "A1" no Nome do Roteador</h3>
-    <div class="box box-tip">
-      <div class="box-icon">💡</div>
-      <div class="box-content">
-        <strong>O que significa "A1" no final do nome do equipamento?</strong>
-        Indica que o cliente possui um <strong>Roteador TP-Link + uma ONU</strong> (conversor de fibra). A cadeia de conexão é:
-        <br><br>
-        <strong>Fibra óptica → ONU → Cabo de rede → Roteador TP-Link</strong>
-      </div>
-    </div>
-
-    <div class="img-placeholder">
-    <img src="https://i.postimg.cc/zXvdPRzX/Esquema-cadeia-de-conexao.png" alt="Esquema visual da cadeia de conexão — cabo de fibra óptica entrando na ONU (conversor), cabo UTP saindo da ONU até o roteador TP-Link, indicando portas WAN e LAN" style="max-width: 100%; height: auto;">
-</div>
-
-
-  <!-- ══════════════════════════════ CAPÍTULO 8 ══ -->
-  <div class="section" id="cap8">
-    <div class="section-header">
-      <div class="section-num">8</div>
-      <div>
-        <h2>ONU vs ONT</h2>
-        <div class="section-desc">Diferenças entre os equipamentos de conversão óptica</div>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Característica</th><th>ONU</th><th>ONT</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Nome completo</strong></td><td>Optical Network Unit (Unidade de Rede Óptica)</td><td>Optical Network Terminal (Terminal de Rede Óptica)</td></tr>
-          <tr><td><strong>Padrão / Organização</strong></td><td>IEEE</td><td>ITU-T</td></tr>
-          <tr><td><strong>Localização típica</strong></td><td>Geralmente <strong>não</strong> fica na casa do assinante</td><td>Geralmente fica na <strong>residência</strong> do assinante</td></tr>
-          <tr><td><strong>Equipamento ativo?</strong></td><td>✅ Sim — precisa de energia elétrica</td><td>✅ Sim — precisa de energia elétrica</td></tr>
-          <tr><td><strong>Recebe e envia dados?</strong></td><td>✅ Sim</td><td>✅ Sim</td></tr>
-          <tr><td><strong>Converte sinal óptico→elétrico?</strong></td><td>✅ Sim</td><td>✅ Sim</td></tr>
-          <tr><td><strong>Serviços fornecidos</strong></td><td>Internet, TV, telefonia via porta PON</td><td>Internet, TV por assinatura, telefonia fixa, IPTV</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>Na prática, para o atendimento He-net, os dois termos são usados para se referir ao <strong>conversor de fibra</strong> instalado no cliente. O fluxo sempre é:</p>
-
-    <div class="box box-tip">
-      <div class="box-icon">📡</div>
-      <div class="box-content">
-        <strong>Cadeia de conexão completa</strong>
-        Fibra óptica (sinal de luz) → <strong>ONU/ONT</strong> (converte para sinal elétrico) → <strong>Cabo UTP</strong> → Roteador / Dispositivo do cliente
-      </div>
-    </div>
-
-    <div class="box box-info">
-      <div class="box-icon">📌</div>
-      <div class="box-content">
-        <strong>Onde conectar o equipamento de configuração?</strong>
-        O computador ou celular usado para configurar o roteador deve estar conectado em uma das <strong>portas LAN</strong> da ONU/ONT, não na porta WAN.
-      </div>
-    </div>
-
-    <h3>8.1 Modelos e Fabricantes na He-net</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Fabricante</th><th>Sigla UNM</th><th>Observação de Acesso</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Nokia</strong></td><td>ALCL</td><td>Acesso padrão via UNM/Flashman</td></tr>
-          <tr><td><strong>Huawei</strong></td><td>HWTC</td><td>Acesso de WAN-VLAN via "Veip Data Service Config" na UNM. Acesso ao painel: somente via <strong>IP no Google Chrome</strong></td></tr>
-          <tr><td><strong>Fiberhome</strong></td><td>—</td><td>Não aparece na lista padrão. Para acessar admin/senha: habilitar caixas em "Port Service" → "ONU Local Manage" na UNM, depois buscar MAC no Flashman em "Credenciais da Interface"</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section" id="c10"><div class="sh"><div class="sn">10</div><div><h2>Casos Práticos</h2><div class="sd">Roteiros para situações comuns do dia a dia</div></div></div>
+    <h3>10.1 Sem Wi-Fi no celular</h3>
+    <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Pedir ao cliente "esquecer" a rede e conectar novamente</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Se não resolver: dar <strong>Restore</strong> na UNM e reiniciar o roteador</div></div></div>
+    <h3>10.2 Rede 5GHz não aparece</h3>
+    <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">UNM: desabilitar e habilitar a rede 5GHz</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Criar rede "teste" e verificar se aparece</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Verificar se <strong>Easy Mesh</strong> está ativo - se sim, desabilitar e separar as redes</div></div></div>
+    <h3>10.3 Redes Wi-Fi somem para todos</h3>
+    <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Verificar na UNM se redes estão desabilitadas ou ocultas</div></div><div class="step"><div class="step-n">2</div><div class="step-b">TP-Link: retirar da tomada por 30 segundos</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Nokia: pressionar botão <strong>Wi-Fi</strong> no aparelho</div></div><div class="step"><div class="step-n">4</div><div class="step-b">Outros: pressionar botão <strong>WPS</strong></div></div></div>
+    <h3>10.4 Câmera de Segurança</h3>
+    <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Habilitar o <strong>IP Público</strong></div></div><div class="step"><div class="step-n">2</div><div class="step-b">Desabilitar o <strong>Port Isolation</strong> na UNM</div></div></div>
+    <h3>10.5 Impressora não conecta</h3>
+    <p>Habilitar o botão <strong>WPS</strong> via interface do aparelho na UNM (autenticação para impressoras na rede 2.4G).</p>
+    <h3>10.6 Intermitência (quedas repetidas)</h3>
+    <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Verificar no IXC o relatório de intermitência (CPF do cliente)</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Realizar configurações na UNM/Flashman</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Solicitar ao cliente monitorar e retornar feedback</div></div></div>
+    <h3>10.7 Sem Conexão - IXC Desconectado e UNM Online (TP-Link)</h3>
+    <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Verificar se o cabo está linkando</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Verificar a <strong>VLAN</strong> do equipamento</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Cliente de Itabuna com IP Público: <strong>desabilitar IP Público</strong></div></div></div>
+    <h3>10.8 Fiberhome - Acesso ao Admin</h3>
+    <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">UNM: <strong>Port Service</strong> → <strong>ONU Local Manage</strong> → habilitar caixas</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Flashman: buscar MAC → <strong>Credenciais da Interface</strong></div></div></div>
   </div>
 
-
-  <!-- ══════════════════════════════ CAPÍTULO 9 ══ -->
-  <div class="section" id="cap9">
-    <div class="section-header">
-      <div class="section-num">9</div>
-      <div>
-        <h2>PPPoE e Configurações de Conexão</h2>
-        <div class="section-desc">Protocolo de autenticação, credenciais e configuração correta</div>
-      </div>
-    </div>
-
-    <h3>9.1 O que é PPPoE</h3>
-    <p><strong>PPPoE</strong> = <em>Point-to-Point Protocol over Ethernet</em>. É o protocolo de autenticação que conecta o roteador do cliente ao concentrador PPPoE do provedor He-net.</p>
-
-    <div class="box box-tip">
-      <div class="box-icon">💡</div>
-      <div class="box-content">
-        <strong>Fluxo de conexão PPPoE</strong>
-        Provedor (data center / concentrador PPPoE) → ONU em modo Bridge → Roteador (faz autenticação com login e senha PPPoE) → Dispositivos do cliente conectados
-      </div>
-    </div>
-
-    <h3>9.2 Padrão de Novo PPPoE</h3>
-    <div class="box box-info">
-      <div class="box-icon">📌</div>
-      <div class="box-content">
-        <strong>Como criar novo PPPoE para o cliente</strong>
-        <ul class="list" style="margin-top:8px">
-          <li><strong>Login:</strong> Nome do titular em minúsculo + 3 primeiros dígitos do código do cliente. Ex.: <code>claudiane320</code></li>
-          <li><strong>Senha:</strong> Código completo do cliente. Ex.: <code>320172</code></li>
-        </ul>
-        Após criar, configure no <strong>Flashman</strong> E verifique na <strong>UNM</strong> se foi salvo.
-      </div>
-    </div>
-
-    <h3>9.3 Ordem de Configuração — Regra Importante</h3>
-    <div class="box box-danger">
-      <div class="box-icon">🔴</div>
-      <div class="box-content">
-        <strong>Sempre configurar nesta ordem:</strong>
-        <ol class="list" style="margin-top:8px">
-          <li>Configure primeiro no <strong>Flashman</strong></li>
-          <li>Depois verifique se foi salvo na <strong>UNM</strong></li>
-        </ol>
-        Esta regra se aplica tanto para lentidão quanto para troca de senha. Nunca inverta a ordem.
-      </div>
-    </div>
-
-    <h3>9.4 IP Público — Quando Habilitar / Desabilitar</h3>
-    <ul class="list">
-      <li><strong>Habilitar IP Público:</strong> quando o cliente não consegue conectar câmera de segurança à rede via Wi-Fi (junto com desabilitar Port Isolation)</li>
-      <li><strong>Desabilitar IP Público:</strong> quando cliente de Itabuna está sem conexão com IXC/Radius desconectado e UNM online</li>
-    </ul>
-
-    <h3>9.5 TVBOX e Serviço de Canais</h3>
-    <div class="box box-alert">
-      <div class="box-icon">📺</div>
-      <div class="box-content">
-        <strong>TVBOX Pirata — Não Homologado</strong>
-        TVBox pirata (não homologado pela He-net) não tem suporte técnico oficial. Se o cliente relata problema no aparelho de canais, o procedimento é: Port → Apagar → Criar Novo (Unicast / Multicast / 300 / Tag).
-      </div>
-    </div>
-
-    <h3>9.6 Confirmação de Serviço</h3>
-    <p>Ao confirmar o serviço do cliente, sempre faça a <strong>troca de senha/usuário</strong> como parte do processo de ativação.</p>
+  <div class="section" id="c11"><div class="sh"><div class="sn">11</div><div><h2>Financeiro, Cancelamento & Retenção</h2><div class="sd">Procedimentos para cancelamento e retenção</div></div></div>
+    <h3>11.1 Inadimplência e Plano Suspenso</h3>
+    <p>IXC Soft → aba <strong>Financeiro</strong> - faturas em atraso aparecem em <span style="color:var(--rd);font-weight:700">vermelho</span>. Plano suspenso: transferir para Financeiro (<code>*2 3001#</code>).</p>
+    <h3>11.2 Cancelamento - Regras</h3>
+    <div class="box bd2"><div class="bi">🔴</div><div class="bc"><strong>Regras críticas</strong><ul class="li" style="margin-top:6px"><li>Só pode ser feito com o <strong>titular</strong> do contrato</li><li>Verificar período contratual de 12 meses e valor rescisório proporcional</li><li><strong>NUNCA coloque seu nome no campo de cancelamento</strong></li><li>Sempre contextualize antes de transferir - nunca transfira sem explicar</li></ul></div></div>
+    <h3>11.3 Retenção</h3>
+    <div class="tw"><table><thead><tr><th>Motivo</th><th>Estratégia</th></tr></thead><tbody>
+      <tr><td>Mudança de endereço sem cobertura</td><td>Verificar troca de titularidade · Confirmar se é definitiva</td></tr>
+      <tr><td>Problemas técnicos recorrentes</td><td>Oferecer solução com suporte técnico · Acionar NOC</td></tr>
+      <tr><td>Proposta melhor de concorrente</td><td>Consultar Comercial sobre contraproposta (<code>*2 3003#</code>)</td></tr>
+    </tbody></table></div>
   </div>
 
-
-  <!-- ══════════════════════════════ CAPÍTULO 10 ══ -->
-  <div class="section" id="cap10">
-    <div class="section-header">
-      <div class="section-num">10</div>
-      <div>
-        <h2>Casos Práticos de Atendimento</h2>
-        <div class="section-desc">Roteiros para as situações mais comuns do dia a dia</div>
-      </div>
-    </div>
-
-    <h3>10.1 Cliente sem Wi-Fi no celular</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Solicitar ao cliente que "esqueça" a rede Wi-Fi no dispositivo e tente conectar novamente</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Se não resolver: dar <strong>Restore</strong> na UNM e reiniciar o roteador</div></div>
-    </div>
-
-    <h3>10.2 Rede 5 GHz não aparece</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Na UNM: desabilitar e habilitar a rede 5 GHz (Wifi Service Config)</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Se não resolver: criar uma rede "teste" e solicitar ao cliente que verifique se aparece</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Verificar se as redes estão unificadas pela função <strong>Easy Mesh</strong> (rede 5G sem o "5G" no nome) — se sim, desabilitar e separar as redes</div></div>
-    </div>
-
-    <h3>10.3 Redes Wi-Fi não aparecem para nenhum dispositivo</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Verificar na UNM se as redes estão desabilitadas ou ocultas</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Se for <strong>TP-Link</strong>: solicitar ao cliente que remova o aparelho da tomada e aguarde 30 segundos</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Se for <strong>Nokia</strong>: pressionar o botão <strong>Wi-Fi</strong> no aparelho</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-body">Demais aparelhos: pressionar o botão <strong>WPS</strong></div></div>
-    </div>
-
-    <h3>10.4 Problemas na rede 2.4 GHz (modelo HGD3)</h3>
-    <div class="box box-alert">
-      <div class="box-icon">⚠️</div>
-      <div class="box-content">
-        <strong>Aparelho HGD3 com rede 2.4G instável</strong>
-        Se o cliente relata que a rede 2.4G aparece e some (enquanto 5G está normal) e o aparelho for modelo <strong>HGD3</strong>: será necessária troca do equipamento. <em>Não informe ao cliente que é troca — apenas oriente que um técnico precisará verificar.</em>
-      </div>
-    </div>
-
-    <h3>10.5 Cliente não consegue conectar impressora</h3>
-    <p>Para conectar impressora à rede 2.4G: habilitar o botão <strong>WPS</strong> via interface do aparelho (necessário para autenticação da impressora na rede Wi-Fi).</p>
-
-    <h3>10.6 Cliente não consegue conectar câmera de segurança</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Liberar o <strong>IP Público</strong> do cliente</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Desabilitar o <strong>Port Isolation</strong> na UNM</div></div>
-    </div>
-
-    <h3>10.7 Intermitência (quedas repetidas)</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Verificar no IXC (CPF/CNPJ do cliente → relatório de intermitência) as quedas registradas</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Realizar as configurações necessárias na UNM/Flashman</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Solicitar ao cliente que monitore e informe se o problema continua</div></div>
-    </div>
-
-    <h3>10.8 Sem Conexão — IXC/Radius Desconectado e UNM Online (TP-Link)</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Verificar se o cabo está linkando</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Verificar a <strong>VLAN</strong> do equipamento</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">Se cliente for de Itabuna e tiver IP Público habilitado: <strong>desabilitar IP Público</strong></div></div>
-    </div>
-
-    <h3>10.9 Aparelho Fiberhome — Acesso ao Admin</h3>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-body">Na UNM: ir em <strong>Port Service</strong> → <strong>ONU Local Manage</strong></div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-body">Habilitar as caixas que estão desabilitadas</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-body">No Flashman: buscar o MAC do equipamento → acessar <strong>Credenciais da Interface</strong> para obter admin e senha</div></div>
+  <div class="section" id="c12"><div class="sh"><div class="sn">12</div><div><h2>Glossário</h2><div class="sd">Termos técnicos e siglas utilizados na He-net</div></div></div>
+    <div class="ggl">
+      <div class="gi"><div class="gt">CPE</div><div class="gd">Customer Premises Equipment - equipamento na residência do cliente (ONU, roteador)</div></div>
+      <div class="gi"><div class="gt">DNS</div><div class="gd">Domain Name System - traduz nomes de domínio em endereços IP</div></div>
+      <div class="gi"><div class="gt">DYINGGASP</div><div class="gd">Alarme de falta de energia na ONU/ONT do cliente</div></div>
+      <div class="gi"><div class="gt">LINKLOSS</div><div class="gd">Alarme de perda de sinal óptico - rompimento, dobra ou problema no conector</div></div>
+      <div class="gi"><div class="gt">MAC Address</div><div class="gd">Endereço físico único de cada interface de rede</div></div>
+      <div class="gi"><div class="gt">NOC</div><div class="gd">Network Operations Center - suporte técnico avançado He-net</div></div>
+      <div class="gi"><div class="gt">ONU / ONT</div><div class="gd">Equipamento conversor de fibra óptica para sinal elétrico instalado no cliente</div></div>
+      <div class="gi"><div class="gt">OS</div><div class="gd">Ordem de Serviço - registro formal de visita técnica ou atividade agendada</div></div>
+      <div class="gi"><div class="gt">Port Isolation</div><div class="gd">Isola dispositivos na rede - deve ser desabilitado para câmeras de segurança</div></div>
+      <div class="gi"><div class="gt">PPPoE</div><div class="gd">Protocolo de autenticação entre roteador e concentrador do provedor He-net</div></div>
+      <div class="gi"><div class="gt">Radius / IXC</div><div class="gd">Servidores de autenticação e autorização de acesso à internet</div></div>
+      <div class="gi"><div class="gt">UNM</div><div class="gd">Sistema Unificado de Monitoramento - plataforma He-net para gerenciar ONUs e Wi-Fi</div></div>
+      <div class="gi"><div class="gt">VLAN / WAN-VLAN</div><div class="gd">Virtual LAN - na He-net, sempre o ramal do cliente com dígito 3 na frente</div></div>
+      <div class="gi"><div class="gt">WPS</div><div class="gd">Wi-Fi Protected Setup - conexão simplificada sem digitar senha (impressoras, IoT)</div></div>
     </div>
   </div>
+  <div class="df"><span>© He-net Telecomunicações · <strong>Manual Operacional Interno</strong></span><span>Versão <strong>2.0</strong> · Julho de 2026</span><span>🔒 Uso Restrito</span></div>
+</div></div>
 
+<!-- ══ TAB 3: BASE TÉCNICA ══ -->
+<div id="tab-tecnico" class="tab-content"><div class="pw">
+  <div class="tab-intro"><div class="tic"><h2>Base de Conhecimento <span>Técnico</span></h2><p>Física das ondas, padrões IEEE, segurança wireless, Wi-Fi 6, Mesh e telefonia celular - baseado nos treinamentos de Redes Sem Fio (DIA 1 e DIA 2).</p></div></div>
 
-  <!-- ══════════════════════════════ CAPÍTULO 11 ══ -->
-  <div class="section" id="cap11">
-    <div class="section-header">
-      <div class="section-num">11</div>
-      <div>
-        <h2>Financeiro, Cancelamento e Retenção</h2>
-        <div class="section-desc">Procedimentos para situações de cancelamento e retenção de clientes</div>
-      </div>
-    </div>
-
-    <h3>11.1 Verificação de Inadimplência</h3>
-    <p>Para verificar se há fatura em aberto ou em atraso: no <strong>IXC Soft</strong>, acesse a aba <strong>Financeiro</strong> — faturas em atraso aparecerão em <span style="color:var(--red);font-weight:700">vermelho</span>.</p>
-
-    <h3>11.2 Plano Suspenso</h3>
-    <p>Quando o cliente tem plano suspenso por inadimplência, encaminhar para o setor <strong>Financeiro</strong> (ramal <code>*2 3001#</code>).</p>
-
-    <h3>11.3 Cancelamento — Regras</h3>
-    <div class="box box-danger">
-      <div class="box-icon">🔴</div>
-      <div class="box-content">
-        <strong>Regras críticas para cancelamento</strong>
-        <ul class="list" style="margin-top:8px">
-          <li>O cancelamento só pode ser feito com o <strong>titular</strong> do contrato</li>
-          <li>Verificar o período contratual de 12 meses e calcular o valor rescisório proporcional aos meses restantes</li>
-          <li><strong>NUNCA coloque seu nome no campo de cancelamento</strong> — use apenas "cancelamento" como identificação</li>
-          <li>Ao transferir para o setor de Cancelamento, sempre explique o motivo antes — nunca transfira sem contextualizar</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3>11.4 Retenção — Argumentos e Estratégias</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Motivo do Cancelamento</th><th>Estratégia de Retenção</th></tr></thead>
-        <tbody>
-          <tr><td>Mudança de endereço para cidade sem cobertura</td><td>Verificar troca de titularidade · Confirmar se a mudança é definitiva · Perguntar destino e data</td></tr>
-          <tr><td>Problemas técnicos recorrentes</td><td>Oferecer suporte técnico garantindo solução · Acionar NOC se necessário</td></tr>
-          <tr><td>Proposta melhor de outro provedor</td><td>Verificar com o <strong>Comercial</strong> a possibilidade de contraproposta (ramal <code>*2 3003#</code>)</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>11.5 Back Office — Confirmação de Atendimento Presencial</h3>
-    <p>Para antecipar ou confirmar visita técnica presencial, acionar o Back Office pelo ramal <code>*2 3004#</code>.</p>
+  <div class="section"><div class="sh"><div class="sn">📡</div><div><h2>Fundamentos do Wi-Fi</h2><div class="sd">Ondas eletromagnéticas, frequências e propriedades físicas</div></div></div>
+    <p>Wi-Fi é uma marca da <strong>Wi-Fi Alliance</strong> utilizada por dispositivos certificados baseados no padrão <strong>IEEE 802.11</strong>. A transmissão se dá por ondas eletromagnéticas com três propriedades principais:</p>
+    <div class="tw"><table><thead><tr><th>Propriedade</th><th>O que é</th><th>Impacto no Wi-Fi</th></tr></thead><tbody>
+      <tr><td><strong>Frequência</strong></td><td>Número de ciclos por segundo (Hz). Ex: 2,4 GHz = 2,4 bilhões de ciclos/s</td><td>Define a banda (2.4GHz ou 5GHz)</td></tr>
+      <tr><td><strong>Amplitude</strong></td><td>A "altura" da onda - valor de pico da energia transmitida</td><td>Quanto maior, mais potente o sinal</td></tr>
+      <tr><td><strong>Comprimento de onda (λ)</strong></td><td>Distância entre dois pontos idênticos do ciclo</td><td>Ondas mais longas penetram melhor em obstáculos</td></tr>
+    </tbody></table></div>
+    <h3>2.4 GHz vs 5 GHz - Comparativo</h3>
+    <div class="tw"><table><thead><tr><th>Característica</th><th>2.4 GHz</th><th>5 GHz</th></tr></thead><tbody>
+      <tr><td>Velocidade</td><td><span class="tag to">Menor</span></td><td><span class="tag tg">Maior</span></td></tr>
+      <tr><td>Alcance</td><td><span class="tag tg">Maior</span></td><td><span class="tag to">Menor</span></td></tr>
+      <tr><td>Interferências</td><td>Alta - micro-ondas, Bluetooth, telefones sem fio</td><td>Baixa - poucas tecnologias nessa faixa</td></tr>
+      <tr><td>Canais ANATEL</td><td>13 canais (20MHz cada)</td><td>Muito mais canais</td></tr>
+      <tr><td>Padrões</td><td>802.11b/g/n</td><td>802.11a/n/ac/ax</td></tr>
+    </tbody></table></div>
   </div>
 
+  <div class="section"><div class="sh"><div class="sn">📶</div><div><h2>Padrões IEEE 802.11</h2><div class="sd">Do 802.11b ao Wi-Fi 6E - tabela comparativa</div></div></div>
+    <div class="tw"><table><thead><tr><th>Padrão</th><th>Nome</th><th>Velocidade</th><th>Frequência</th><th>Tecnologia</th></tr></thead><tbody>
+      <tr><td><code>802.11b</code></td><td>Wi-Fi 1</td><td>11 Mbps</td><td>2.4 GHz</td><td>-</td></tr>
+      <tr><td><code>802.11g</code></td><td>Wi-Fi 3</td><td>54 Mbps</td><td>2.4 GHz</td><td>OFDM</td></tr>
+      <tr><td><code>802.11a</code></td><td>Wi-Fi 2</td><td>54 Mbps</td><td>5 GHz</td><td>OFDM</td></tr>
+      <tr><td><code>802.11n</code></td><td><strong>Wi-Fi 4</strong></td><td>600 Mbps</td><td>2.4 ou 5 GHz</td><td>MIMO, 20/40 MHz</td></tr>
+      <tr><td><code>802.11ac W1</code></td><td><strong>Wi-Fi 5</strong></td><td>3,5 Gbps</td><td>5 GHz</td><td>SU-MIMO, 80 MHz</td></tr>
+      <tr><td><code>802.11ac W2</code></td><td><strong>Wi-Fi 5 Wave 2</strong></td><td>7 Gbps</td><td>5 GHz</td><td>MU-MIMO, 160 MHz</td></tr>
+      <tr><td><code>802.11ax</code></td><td><strong>Wi-Fi 6</strong></td><td>9,6 Gbps</td><td>2.4 + 5 GHz</td><td>OFDMA, 8x8 MU-MIMO, BSS Color, TWT</td></tr>
+      <tr><td><code>802.11ax (6E)</code></td><td><strong>Wi-Fi 6E</strong></td><td>9,6 Gbps</td><td>2.4 + 5 + <strong>6 GHz</strong></td><td>Tri-band, OFDMA</td></tr>
+      <tr><td><code>802.11ad</code></td><td>WiGig</td><td>7,2 Gbps</td><td>60 GHz</td><td>Alcance ~10m, vídeo UHD</td></tr>
+    </tbody></table></div>
+    <h3>Tecnologias-chave</h3>
+    <div class="tc">
+      <div class="card"><div class="ct">📡 MIMO / MU-MIMO</div><p style="font-size:13px">Múltiplas antenas para transmissão simultânea. MU-MIMO = vários dispositivos ao mesmo tempo sem perda de velocidade.</p></div>
+      <div class="card"><div class="ct">🚚 OFDMA</div><p style="font-size:13px">Wi-Fi 6: cada "caminhão" de dados entrega pacotes para múltiplos dispositivos de uma vez. Muito mais eficiente.</p></div>
+      <div class="card"><div class="ct">🎨 BSS Color</div><p style="font-size:13px">Marca os quadros das redes vizinhas para ignorar interferências. Essencial em prédios e condomínios.</p></div>
+      <div class="card"><div class="ct">🔋 Target Wake Time</div><p style="font-size:13px">Dispositivos IoT "dormitam" e acordam apenas quando necessário, economizando bateria. Wi-Fi 6.</p></div>
+    </div>
+    <h3>Canais e Largura de Canal</h3>
+    <div class="box bt"><div class="bi">💡</div><div class="bc"><strong>Canais recomendados He-net</strong>2.4GHz: canais <code>1</code>, <code>6</code> ou <code>11</code> (únicos que não se sobrepõem) · Largura: <code>20 MHz</code><br>5GHz: canais <code>36</code>, <code>48</code> ou <code>104</code> · Largura: <code>80 MHz</code> · Potência: <code>100%</code></div></div>
+    <h3>dBm vs dBi</h3>
+    <div class="tw"><table><thead><tr><th>Sigla</th><th>O que mede</th><th>Exemplo prático</th></tr></thead><tbody>
+      <tr><td><code>dBm</code></td><td><strong>Potência do sinal Wi-Fi</strong> - mais próximo de 0 = mais forte</td><td>-23 dBm = excelente · -80 dBm = fraco</td></tr>
+      <tr><td><code>dBi</code></td><td><strong>Ganho da antena</strong> - mais dBi = mais alcance, ângulo mais estreito</td><td>Maioria dos roteadores: 5 dBi</td></tr>
+    </tbody></table></div>
+  </div>
 
-  <!-- ══════════════════════════════ CAPÍTULO 12 (GLOSSÁRIO) ══ -->
-  <div class="section" id="cap12">
-    <div class="section-header">
-      <div class="section-num">12</div>
-      <div>
-        <h2>Glossário</h2>
-        <div class="section-desc">Termos técnicos e siglas utilizados na He-net</div>
+  <div class="section"><div class="sh"><div class="sn">🔊</div><div><h2>Antenas</h2><div class="sd">Tipos, comportamentos e atenuação</div></div></div>
+    <div class="box ba"><div class="bi">⚠️</div><div class="bc"><strong>Mais antenas ≠ mais alcance</strong>Mais antenas melhoram o <em>tráfego de dados</em> (MIMO), não o alcance. O ganho total em dBi é o mesmo - o que melhora é a capacidade de atender múltiplos dispositivos.</div></div>
+    <div class="tw"><table><thead><tr><th>Tipo</th><th>Cobertura</th><th>Ganho</th><th>Melhor uso</th></tr></thead><tbody>
+      <tr><td><strong>Onidirecional</strong></td><td>360°</td><td>2-5 dBi</td><td>Residências, uso geral</td></tr>
+      <tr><td><strong>Setorial</strong></td><td>90° concentrado</td><td>12-17 dBi</td><td>Canto de cômodo para cobertura direcional</td></tr>
+      <tr><td><strong>Direcional</strong></td><td>Feixe estreito</td><td>10-24 dBi</td><td>Links ponto a ponto, longas distâncias</td></tr>
+    </tbody></table></div>
+    <h3>Atenuação - O que Bloqueia o Sinal</h3>
+    <div class="tw"><table><thead><tr><th>Material</th><th>Atenuação</th></tr></thead><tbody>
+      <tr><td>Espaço aberto</td><td><span class="tag tg">Mínima</span></td></tr>
+      <tr><td>Paredes de drywall</td><td><span class="tag tg">Baixa</span></td></tr>
+      <tr><td>Portas de madeira</td><td><span class="tag ty">Moderada</span></td></tr>
+      <tr><td>Alvenaria / tijolo</td><td><span class="tag to">Alta</span></td></tr>
+      <tr><td>Vidros insonorizados / espelhos</td><td><span class="tag tr">Muito alta</span></td></tr>
+      <tr><td>Concreto com aço</td><td><span class="tag tr">Crítica</span></td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="section"><div class="sh"><div class="sn">🔒</div><div><h2>Segurança Wireless</h2><div class="sd">WEP, WPA, WPA2, WPA3, TKIP, AES e WPS</div></div></div>
+    <div class="tw"><table><thead><tr><th>Protocolo</th><th>Criptografia</th><th>Ano</th><th>Segurança</th><th>Status</th></tr></thead><tbody>
+      <tr><td><strong>Rede Aberta</strong></td><td>Nenhuma</td><td>-</td><td><span class="tag tr">Nula</span></td><td>Nunca usar</td></tr>
+      <tr><td><strong>WEP</strong></td><td>Estática</td><td>1997</td><td><span class="tag tr">Muito fraca</span></td><td>Obsoleto - qualquer app descobre a senha</td></tr>
+      <tr><td><strong>WPA/PSK</strong></td><td>TKIP</td><td>2003</td><td><span class="tag to">Fraca</span></td><td>Não recomendado - TKIP tem vulnerabilidades</td></tr>
+      <tr><td><strong>WPA2/PSK</strong></td><td>AES</td><td>2004</td><td><span class="tag tg">Boa</span></td><td>Padrão recomendado para equipamentos pré-2018</td></tr>
+      <tr><td><strong>WPA3</strong></td><td>SAE (256-bit)</td><td>2018</td><td><span class="tag tg">Excelente</span></td><td>Mais seguro - disponível em equipamentos AX (Wi-Fi 6)</td></tr>
+    </tbody></table></div>
+    <div class="box bi2"><div class="bi">📌</div><div class="bc"><strong>Ranking de segurança (melhor → pior)</strong>WPA3-SAE → WPA2-AES → WPA-AES → WPA-AES+TKIP → WPA-TKIP → WEP → Rede aberta</div></div>
+    <div class="tc">
+      <div class="card"><div class="ct">⚠️ TKIP - Não recomendado</div><p style="font-size:13px">Obsoleto desde 2012. Similar ao WEP em vulnerabilidades. Roteadores com TKIP podem reduzir velocidade para <strong>54 Mbps</strong>.</p></div>
+      <div class="card"><div class="ct">✅ AES - Recomendado</div><p style="font-size:13px">Padrão mundial com o WPA2. Dispositivos pós-2006 com logo Wi-Fi obrigatoriamente suportam AES. Sempre escolher <strong>WPA2-PSK (AES)</strong>.</p></div>
+    </div>
+    <h3>WPS</h3>
+    <p>Wi-Fi Protected Setup facilita conexão sem digitar senha. Útil para impressoras e IoT. O método WPS por PIN possui vulnerabilidade de segurança conhecida - prefira o método por botão físico.</p>
+  </div>
+
+  <div class="section"><div class="sh"><div class="sn">🌐</div><div><h2>Wi-Fi Mesh vs Extensor</h2><div class="sd">Quando recomendar cada solução</div></div></div>
+    <div class="tw"><table><thead><tr><th>Característica</th><th>Extensor de Sinal</th><th>Wi-Fi Mesh</th></tr></thead><tbody>
+      <tr><td>Redes criadas</td><td>Rede separada (ex: "MinhaRede_EXT")</td><td><span class="tag tg">Rede única</span> - mesmo nome/senha</td></tr>
+      <tr><td>Roaming automático</td><td>❌ Troca manual</td><td>✅ Automático para o ponto mais forte</td></tr>
+      <tr><td>Gerenciamento</td><td>Interface separada</td><td>Um único App (controle parental, filtros, estatísticas)</td></tr>
+      <tr><td>Cobertura</td><td>Complementar pontual</td><td>Casas médias/grandes (até 1800m²)</td></tr>
+      <tr><td>Custo</td><td>Mais barato</td><td>Mais caro, mas melhor experiência</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="section"><div class="sh"><div class="sn">📱</div><div><h2>Telefonia Celular</h2><div class="sd">ERBs, CCCs e gerações celulares</div></div></div>
+    <div class="tw"><table><thead><tr><th>Componente</th><th>Sigla</th><th>Função</th></tr></thead><tbody>
+      <tr><td>Estação Móvel (celular)</td><td>EM</td><td>Dispositivo do usuário - faz/recebe chamadas e dados</td></tr>
+      <tr><td>Estação Rádio Base</td><td><strong>ERB</strong></td><td>"Antena" celular que cobre uma célula geográfica</td></tr>
+      <tr><td>Central de Comutação e Controle</td><td><strong>CCC</strong></td><td>Controla ERBs e permite comunicação entre redes</td></tr>
+    </tbody></table></div>
+    <div class="box bt"><div class="bi">💡</div><div class="bc"><strong>Handoff e Roaming</strong><strong>Handoff:</strong> transferência automática entre ERBs sem interromper a chamada. <strong>Roaming:</strong> uso da rede em outra cidade/país via operadora parceira.</div></div>
+    <h3>Gerações Celulares</h3>
+    <div class="tw"><table><thead><tr><th>Geração</th><th>Tecnologias</th><th>Velocidade</th><th>Indicador</th></tr></thead><tbody>
+      <tr><td><strong>1G (1980)</strong></td><td>AMPS</td><td>Analógico</td><td>-</td></tr>
+      <tr><td><strong>2G (1990)</strong></td><td>GSM → GPRS → EDGE</td><td>Até 500 Kbps</td><td>G ou E</td></tr>
+      <tr><td><strong>3G (2000)</strong></td><td>UMTS → HSDPA → HSDPA+</td><td>Até 28 Mbps</td><td>H ou H+</td></tr>
+      <tr><td><strong>4G (2010)</strong></td><td>LTE → LTE Advanced</td><td>Até 3 Gbps</td><td>4G / LTE</td></tr>
+      <tr><td><strong>5G (2018)</strong></td><td>Novo padrão</td><td>Até 20 Gbps</td><td>5G</td></tr>
+      <tr><td><strong>6G (2028-2030)</strong></td><td>Em desenvolvimento</td><td>Até 1 Tbps</td><td>-</td></tr>
+    </tbody></table></div>
+    <div class="box bi2"><div class="bi">📌</div><div class="bc"><strong>Para usar 4G: 3 requisitos obrigatórios</strong>1) Chip 4G · 2) Aparelho 4G · 3) Cobertura 4G da operadora no local</div></div>
+  </div>
+
+  <div class="df"><span>© He-net · <strong>Base Técnica - Redes Sem Fio</strong></span><span>Treinamentos DIA 1 e DIA 2</span><span>🔒 Uso Restrito</span></div>
+</div></div>
+
+<!-- ══ TAB 4: FAQ ══ -->
+<div id="tab-faq" class="tab-content"><div class="pw">
+  <div class="tab-intro"><div class="tic"><h2>FAQ & <span>Busca Rápida</span></h2><p>Dúvidas frequentes do atendimento. Digite qualquer termo para filtrar.</p></div></div>
+  <div class="sc" style="margin-bottom:20px"><div class="sb"><span>🔍</span><input id="fs" placeholder="Buscar (ex: Linkloss, DNS, reset, VLAN, impressora, câmera...)" oninput="ff()"></div></div>
+  <div id="fl">
+    <div class="ai" data-t="rede 5ghz nao aparece desabilitar easy mesh nokia wps">
+      <button class="at" onclick="ta(this)"><span>📡</span>A rede 5GHz não aparece. O que fazer?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">UNM: <strong>desabilitar</strong> a rede 5GHz e <strong>habilitar</strong> novamente (Wifi Service Config)</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Criar rede "teste" e verificar se aparece nos dispositivos</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Verificar se <strong>Easy Mesh</strong> está ativo - desabilitar e separar as redes</div></div><div class="step"><div class="step-n">4</div><div class="step-b">Nokia: pressionar o botão <strong>Wi-Fi</strong> físico no equipamento</div></div></div>
       </div>
     </div>
-
-    <div class="glossary-grid">
-      <div class="glossary-item">
-        <div class="glossary-term">CPE</div>
-        <div class="glossary-def">Customer Premises Equipment — equipamento instalado na residência do cliente (ONU, roteador, etc.)</div>
+    <div class="ai" data-t="mac cms flashman unm nao aparece acesso ip chrome">
+      <button class="at" onclick="ta(this)"><span>🔎</span>MAC começa com "CMS" - como acessar as configurações?<span class="aa">▼</span></button>
+      <div class="ab"><p>MAC com <strong>CMS</strong> aparece na UNM mas <strong>não no Flashman</strong>. Acessar via <strong>IP da ONT/roteador</strong> diretamente no Google Chrome. Buscar credenciais no Flashman em "Credenciais da Interface".</p></div>
+    </div>
+    <div class="ai" data-t="ordem configuracao lentidao senha flashman unm primeiro obrigatoria">
+      <button class="at" onclick="ta(this)"><span>⚙️</span>Qual a ordem correta para configurar lentidão ou trocar senha?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="box bd2" style="margin-bottom:10px"><div class="bi">🔴</div><div class="bc"><strong>Regra obrigatória</strong>Nunca inverter a ordem - vale para lentidão e troca de senha.</div></div>
+        <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Configurar primeiro no <strong>Flashman</strong></div></div><div class="step"><div class="step-n">2</div><div class="step-b">Verificar na <strong>UNM</strong> se foi salvo</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Registrar no protocolo: DNS, canal e ações realizadas</div></div></div>
       </div>
-      <div class="glossary-item">
-        <div class="glossary-term">DNS</div>
-        <div class="glossary-def">Domain Name System — servidor que traduz nomes de domínio (ex.: google.com) em endereços IP</div>
+    </div>
+    <div class="ai" data-t="camera seguranca ip publico port isolation configurar">
+      <button class="at" onclick="ta(this)"><span>📷</span>Cliente não consegue conectar câmera de segurança. O que fazer?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Habilitar o <strong>IP Público</strong> do cliente</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Desabilitar o <strong>Port Isolation</strong> na UNM (permite comunicação entre dispositivos na rede)</div></div></div>
       </div>
-      <div class="glossary-item">
-        <div class="glossary-term">DYINGGASP</div>
-        <div class="glossary-def">Alarme de falta de energia no equipamento ONU/ONT do cliente</div>
+    </div>
+    <div class="ai" data-t="impressora conectar wps rede 2.4 wifi">
+      <button class="at" onclick="ta(this)"><span>🖨️</span>O cliente não consegue conectar a impressora. O que fazer?<span class="aa">▼</span></button>
+      <div class="ab"><p>Impressoras precisam da rede <strong>2.4 GHz</strong>. Habilitar o botão <strong>WPS</strong> via interface do roteador na UNM. Depois pressionar WPS na impressora conforme o manual do fabricante.</p></div>
+    </div>
+    <div class="ai" data-t="linkloss dyinggasp tipo 1 tipo 3 sem conexao luz vermelha radius os">
+      <button class="at" onclick="ta(this)"><span>🔴</span>O que é LINKLOSS e DYINGGASP? Como abrir OS Tipo 1 ou Tipo 3?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="tc">
+          <div class="card"><div class="ct">🔴 LINKLOSS</div><p style="font-size:13px">Perda de link óptico - rompimento ou dobra na fibra. Sempre → <strong>OS Tipo 3</strong>.</p></div>
+          <div class="card"><div class="ct">🟠 DYINGGASP</div><p style="font-size:13px">Falta de energia no equipamento - fonte queimada ou cabo desconectado. Pode ser <strong>Tipo 1 ou 3</strong>.</p></div>
+        </div>
+        <p style="margin-top:10px"><strong>Regra:</strong> Luz vermelha + DYINGGASP ou LINKLOSS → <strong>Tipo 3</strong>. Sem luz vermelha mesmo com DYINGGASP → <strong>Tipo 1</strong>.</p>
       </div>
-      <div class="glossary-item">
-        <div class="glossary-term">ERP</div>
-        <div class="glossary-def">Enterprise Resource Planning — sistema integrado de gestão empresarial (ex.: IXC Soft)</div>
+    </div>
+    <div class="ai" data-t="reincidencia 30 dias noc suporte nivel 2 visita tecnica">
+      <button class="at" onclick="ta(this)"><span>🔄</span>Cliente teve visita há menos de 30 dias e ainda tem problema. O que fazer?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Informar que o caso será encaminhado ao <strong>Suporte Avançado (NOC / Nível 2)</strong></div></div><div class="step"><div class="step-n">2</div><div class="step-b">Coletar as informações do formulário de reincidência</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Encaminhar para NOC - não agendar nova OS sem passar pelo NOC primeiro</div></div></div>
       </div>
-      <div class="glossary-item">
-        <div class="glossary-term">Fast Ethernet</div>
-        <div class="glossary-def">Padrão de rede 10/100 Mbps, velocidade máxima de 100 Mbps por porta física</div>
+    </div>
+    <div class="ai" data-t="cancelamento titular 0800 regras processo retenção">
+      <button class="at" onclick="ta(this)"><span>❌</span>Como proceder quando o cliente solicita cancelamento?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="steps"><div class="step"><div class="step-n">1</div><div class="step-b">Perguntar o motivo para tentar retenção</div></div><div class="step"><div class="step-n">2</div><div class="step-b">Problema técnico: acionar suporte com garantia de solução</div></div><div class="step"><div class="step-n">3</div><div class="step-b">Proposta de concorrente: consultar Comercial (<code>*2 3003#</code>)</div></div><div class="step"><div class="step-n">4</div><div class="step-b">Se não reter: informar que o cancelamento é pelo <strong>0800 000 9700</strong> com o <strong>titular</strong> em horário comercial</div></div></div>
+        <div class="box bd2" style="margin-top:10px"><div class="bi">🔴</div><div class="bc"><strong>Nunca coloque seu nome no campo de cancelamento</strong>Sempre contextualizar antes de transferir para o setor.</div></div>
       </div>
-      <div class="glossary-item">
-        <div class="glossary-term">Gigabit Ethernet</div>
-        <div class="glossary-def">Padrão de rede 10/100/1000 Mbps, velocidade máxima de 1 Gbps por porta física</div>
+    </div>
+    <div class="ai" data-t="fiberhome hgd3 hg6143d3 bug 2.4ghz rede some troca equipamento">
+      <button class="at" onclick="ta(this)"><span>📦</span>Rede 2.4GHz some e volta em Fiberhome HG6143D3. Como resolver?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="box bd2"><div class="bi">🔴</div><div class="bc"><strong>Falha de hardware conhecida</strong>Modelo HG6143D3 tem bug no módulo 2.4GHz (especialmente após queda de energia). Procedimentos remotos não resolvem. Abrir <strong>OS de Troca de Equipamento</strong>. Não informar ao cliente que é troca.</div></div>
       </div>
-      <div class="glossary-item">
-        <div class="glossary-term">Homologado</div>
-        <div class="glossary-def">Equipamento aprovado e certificado para uso na rede He-net</div>
+    </div>
+    <div class="ai" data-t="vlan wan duplicidade configurar ramal 3 wlan-vlan">
+      <button class="at" onclick="ta(this)"><span>🔢</span>Como verificar e configurar a WAN-VLAN corretamente?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="box bi2"><div class="bi">📌</div><div class="bc"><strong>Regra</strong>WAN-VLAN = ramal do cliente com dígito 3 na frente.<br>Ex: ramal <code>149</code> → VLAN <code>3149</code> · ramal <code>08</code> → VLAN <code>308</code></div></div>
+        <p>Verificar/alterar: UNM → <strong>Veip Data Service Config</strong> (Huawei) ou <strong>Wan Service</strong> (outros). Duplicidade de VLAN pode causar intermitência severa e problemas em jogos online.</p>
       </div>
-      <div class="glossary-item">
-        <div class="glossary-term">IP</div>
-        <div class="glossary-def">Internet Protocol — endereço numérico que identifica um dispositivo na rede (ex.: 192.168.0.1)</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">IP Privado</div>
-        <div class="glossary-def">Endereço IP usado dentro da rede local (LAN), não acessível diretamente pela internet</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">IP Público</div>
-        <div class="glossary-def">Endereço IP único visível na internet, necessário para câmeras e alguns serviços externos</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">LAN</div>
-        <div class="glossary-def">Local Area Network — rede local que conecta dispositivos dentro de um mesmo espaço físico</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">LINKLOSS</div>
-        <div class="glossary-def">Alarme de perda de sinal óptico na fibra — indica rompimento, dobra ou problema no conector</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">MAC Address</div>
-        <div class="glossary-def">Endereço físico único de cada interface de rede, usado para identificar equipamentos</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">NOC</div>
-        <div class="glossary-def">Network Operations Center — centro de operações de rede, responsável pelo monitoramento e suporte técnico avançado</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">ONU</div>
-        <div class="glossary-def">Optical Network Unit — equipamento conversor de fibra óptica para sinal elétrico (padrão IEEE)</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">ONT</div>
-        <div class="glossary-def">Optical Network Terminal — equipamento conversor de fibra óptica para sinal elétrico (padrão ITU-T), geralmente na residência</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">OS</div>
-        <div class="glossary-def">Ordem de Serviço — registro formal de uma visita técnica ou atividade agendada</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">Port Isolation</div>
-        <div class="glossary-def">Recurso que isola dispositivos na rede impedindo comunicação entre eles — deve ser desabilitado para uso de câmeras</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">PPPoE</div>
-        <div class="glossary-def">Point-to-Point Protocol over Ethernet — protocolo de autenticação entre roteador e concentrador do provedor</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">Radius / IXC</div>
-        <div class="glossary-def">Servidores de autenticação e autorização de acesso à internet — quando desconectado, o cliente perde acesso</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">RJ45</div>
-        <div class="glossary-def">Conector padrão para cabos de rede UTP (8 pinos), usado em todas as conexões Ethernet</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">UNM</div>
-        <div class="glossary-def">Sistema Unificado de Monitoramento — plataforma He-net para gerenciar ONUs, configurar Wi-Fi e monitorar conexões</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">UTP</div>
-        <div class="glossary-def">Unshielded Twisted Pair — tipo de cabo de rede trançado sem blindagem, com conector RJ45</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">VLAN / WAN-VLAN</div>
-        <div class="glossary-def">Virtual LAN — segmentação virtual da rede. Na He-net, a WAN-VLAN é o ramal do técnico precedido pelo dígito 3</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">WAN</div>
-        <div class="glossary-def">Wide Area Network — rede de longa distância; porta WAN do roteador é onde se conecta o link externo (ONU)</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">Wireless / Wi-Fi</div>
-        <div class="glossary-def">Rede sem fio — comunicação por rádio frequência (2.4 GHz ou 5 GHz) entre dispositivos e roteador</div>
-      </div>
-      <div class="glossary-item">
-        <div class="glossary-term">WPS</div>
-        <div class="glossary-def">Wi-Fi Protected Setup — botão/função que simplifica a conexão de dispositivos à rede Wi-Fi sem digitar senha</div>
+    </div>
+    <div class="ai" data-t="dns primario secundario configurar padrao henet google 8.8.8.8">
+      <button class="at" onclick="ta(this)"><span>🌐</span>Quais DNS devo configurar? Qual é o padrão He-net?<span class="aa">▼</span></button>
+      <div class="ab">
+        <div class="tw"><table><thead><tr><th>Configuração</th><th>DNS Primário</th><th>DNS Secundário</th></tr></thead><tbody>
+          <tr><td><span class="tag tg">Padrão He-net</span></td><td><code>8.8.8.8</code> (Google)</td><td><code>177.38.244.2</code> (He-net)</td></tr>
+          <tr><td>Google completo</td><td><code>8.8.8.8</code></td><td><code>8.8.4.4</code></td></tr>
+          <tr><td>He-net completo</td><td><code>177.38.244.1</code></td><td><code>177.38.244.2</code></td></tr>
+        </tbody></table></div>
+        <p style="font-size:12.5px;color:var(--g600);margin-top:8px">Alterar em "User DHCP Server Parameter" na UNM. Registrar no protocolo qual DNS foi configurado.</p>
       </div>
     </div>
   </div>
 
-
-  <!-- ── RODAPÉ ── -->
-  <div class="doc-footer">
-    <span>© He-net Telecomunicações · <strong>Manual Operacional Interno</strong></span>
-    <span>Versão <strong>1.0</strong> · Abril de 2026</span>
-    <span>🔒 Documento de uso restrito</span>
+  <!-- GLOSSÁRIO RÁPIDO -->
+  <div class="section" style="margin-top:28px"><div class="sh"><div class="sn">📖</div><div><h2>Glossário Rápido</h2><div class="sd">Termos mais consultados no atendimento</div></div></div>
+    <div class="ggl">
+      <div class="gi"><div class="gt">AES</div><div class="gd">Criptografia do WPA2. Padrão mundial, muito seguro. Preferível ao TKIP.</div></div>
+      <div class="gi"><div class="gt">BSS Color</div><div class="gd">Wi-Fi 6: marca quadros de redes vizinhas para ignorar interferências.</div></div>
+      <div class="gi"><div class="gt">dBi</div><div class="gd">Ganho de antena. Maior dBi = mais alcance, porém ângulo mais estreito.</div></div>
+      <div class="gi"><div class="gt">dBm</div><div class="gd">Potência do sinal Wi-Fi. Mais próximo de 0 = mais forte. Ex: -23 dBm = excelente.</div></div>
+      <div class="gi"><div class="gt">DHCP</div><div class="gd">Distribui endereços IP automaticamente para dispositivos da rede.</div></div>
+      <div class="gi"><div class="gt">DYINGGASP</div><div class="gd">Alarme de falta de energia na ONU/ONT. Causa: fonte queimada ou cabo desconectado.</div></div>
+      <div class="gi"><div class="gt">ERB</div><div class="gd">Estação Rádio Base - "antena" da telefonia celular que cobre uma área geográfica.</div></div>
+      <div class="gi"><div class="gt">FCR</div><div class="gd">First Call Resolution - resolução no primeiro contato. Indicador de qualidade.</div></div>
+      <div class="gi"><div class="gt">Handoff</div><div class="gd">Transferência automática do celular entre ERBs sem interrupção da chamada.</div></div>
+      <div class="gi"><div class="gt">LINKLOSS</div><div class="gd">Perda de sinal óptico na fibra. Rompimento, dobra severa ou problema no conector. → OS Tipo 3.</div></div>
+      <div class="gi"><div class="gt">MIMO / MU-MIMO</div><div class="gd">Múltiplas antenas para transmissão simultânea a vários dispositivos.</div></div>
+      <div class="gi"><div class="gt">NOC</div><div class="gd">Network Operations Center - suporte técnico avançado He-net. Acionar para reincidências.</div></div>
+      <div class="gi"><div class="gt">OFDMA</div><div class="gd">Wi-Fi 6: entrega dados a múltiplos dispositivos em um único pacote. Muito mais eficiente.</div></div>
+      <div class="gi"><div class="gt">PPPoE</div><div class="gd">Protocolo de autenticação do roteador com o servidor He-net. Desconectado = sem acesso.</div></div>
+      <div class="gi"><div class="gt">SAE</div><div class="gd">Autenticação do WPA3 - protege contra ataques de dicionário offline.</div></div>
+      <div class="gi"><div class="gt">TKIP</div><div class="gd">Criptografia WPA, obsoleta desde 2012. Limita velocidade a 54 Mbps em roteadores modernos.</div></div>
+      <div class="gi"><div class="gt">VLAN / WAN-VLAN</div><div class="gd">Segmentação lógica da rede. Na He-net: ramal do cliente com dígito 3 na frente.</div></div>
+      <div class="gi"><div class="gt">WPA3</div><div class="gd">Protocolo de segurança mais recente (2018). Usa SAE e criptografia 192-bit. Disponível em Wi-Fi 6.</div></div>
+    </div>
   </div>
 
-</div><!-- /page-wrapper -->
+  <div class="df"><span>© He-net Telecomunicações · <strong>Portal Operacional</strong></span><span>Versão <strong>2.0</strong> · Julho de 2026</span><span>🔒 Uso Restrito</span></div>
+</div></div>
+
+<script>
+function sw(n,b){
+  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active')});
+  document.getElementById('tab-'+n).classList.add('active');
+  b.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+var ac='todos';
+function fn(){
+  var q=document.getElementById('ns').value.toLowerCase().trim();
+  var cards=document.querySelectorAll('.ncard');
+  var v=0;
+  cards.forEach(function(c){
+    var txt=(c.dataset.t||'')+' '+c.innerText.toLowerCase();
+    var cm=ac==='todos'||c.dataset.c===ac;
+    var sm=q===''||txt.includes(q);
+    c.style.display=(cm&&sm)?'':'none';
+    if(cm&&sm)v++;
+  });
+  document.getElementById('nr').style.display=v===0?'block':'none';
+}
+function fc(cat,b){
+  ac=cat;
+  document.querySelectorAll('.fb').forEach(function(x){x.classList.remove('active')});
+  b.classList.add('active');
+  fn();
+}
+function ta(b){
+  var body=b.nextElementSibling;
+  var open=b.classList.contains('open');
+  document.querySelectorAll('.at').forEach(function(x){x.classList.remove('open')});
+  document.querySelectorAll('.ab').forEach(function(x){x.classList.remove('open')});
+  if(!open){b.classList.add('open');body.classList.add('open');}
+}
+function ff(){
+  var q=document.getElementById('fs').value.toLowerCase().trim();
+  document.querySelectorAll('#fl .ai').forEach(function(i){
+    var txt=(i.dataset.t||'')+' '+i.innerText.toLowerCase();
+    i.style.display=(q===''||txt.includes(q))?'':'none';
+  });
+}
+</script>
 </body>
 </html>
